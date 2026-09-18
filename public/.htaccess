@@ -1,0 +1,15 @@
+# Single-page app fallback for React Router (BrowserRouter).
+# Any request that isn't a real file or folder gets served index.html
+# instead of a 404, so client-side routing can take over.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Let real files (index.html, assets, etc.) be served normally.
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Everything else falls back to index.html.
+  RewriteRule . /index.html [L]
+</IfModule>
