@@ -143,6 +143,7 @@ section{padding:80px 0;scroll-margin-top:88px;}
 .two-col{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;}
 .two-col.rev{grid-template-columns:0.9fr 1.1fr;}
 .two-col.rev .imgcol{order:2;}
+.two-col{align-items:flex-start;}
 .imgcol img{border-radius:8px;border:1px solid var(--hairline);}
 p.body-p{opacity:0.82;font-size:15.5px;margin-top:16px;}
 

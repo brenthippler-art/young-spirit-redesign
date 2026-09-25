@@ -13,9 +13,21 @@ import raiderPedigree from "../assets/7D7411B9-C7CB-49A5-B239-F6F728A6CA8B.jpeg"
 // with prev/next, regardless of which section (Doberman or Rottweiler) the
 // person clicked into first.
 const PEDIGREES = [
-  { src: kenaPedigree, alt: "Kena Nell's pedigree chart", name: "Young Spirit's Kena Nell" },
-  { src: saintPedigree, alt: "Saint's pedigree chart", name: "Young Spirit's Saint" },
-  { src: raiderPedigree, alt: "Raider's pedigree chart", name: "Young Spirit's Raider" },
+  {
+    src: kenaPedigree,
+    alt: "Kena Nell's pedigree chart",
+    name: "Young Spirit's Kena Nell",
+  },
+  {
+    src: saintPedigree,
+    alt: "Saint's pedigree chart",
+    name: "Young Spirit's Saint",
+  },
+  {
+    src: raiderPedigree,
+    alt: "Raider's pedigree chart",
+    name: "Young Spirit's Raider",
+  },
 ];
 
 export default function OurDogs() {
@@ -36,7 +48,21 @@ export default function OurDogs() {
           <nav className="pill-nav" aria-label="Jump to section">
             <a href="#doberman">Dobermans</a>
             <a href="#rottweiler">Rottweilers</a>
+            <p>
+              All of our dogs are AKC registered. To help protect against fraud,
+              we do not publish registration numbers on our website — these are
+              available to verified buyers upon request. If you have any
+              questions about registration, please contact us directly via
+              email, phone call or FaceTime.{" "}
+            </p>
           </nav>
+          <a
+            href="tel:2706054128"
+            className="btn btn-primary"
+            style={{ marginTop: 28 }}
+          >
+            Call or Text Now
+          </a>
         </div>
       </section>
 

@@ -26,6 +26,10 @@ export default function Faq() {
             waitlist, but it does affect your place in pick order.
           </FaqItem>
 
+          <FaqItem question="What forms of payment do you accept?">
+            For your convenience, Young Spirit accepts cash payments in person, or electronic payments through Apple Pay or Venmo.
+          </FaqItem>
+
           <FaqItem question="Do you offer a health guarantee?">
             Yes — full terms are laid out in your <Link to="/litters#agreement" style={{ color: 'var(--brass-bright)', textDecoration: 'underline' }}>puppy contract</Link>.
           </FaqItem>
@@ -41,7 +45,7 @@ export default function Faq() {
           </FaqItem>
 
           <FaqItem question="Are your dogs AKC registered?">
-            Yes, all of our dogs are AKC registered.
+            Yes, all of our dogs are AKC registered. To help protect against fraud, we do not publish registration numbers on our website — these are available to verified buyers upon request. If you have any questions about registration, please contact us directly via email, phone call or FaceTime.
           </FaqItem>
 
           <FaqItem question="How do I get in touch with you?">

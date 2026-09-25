@@ -1,14 +1,16 @@
 import Eyebrow from "../components/Eyebrow";
-import litterAnnouncement from "../assets/litter-announcement.png";
+import kenaPups from "../assets/gallery/kenaxaxel26/watermarked-kena-puppies.jpg";
 import waitlistGraphic from "../assets/waitlist.png";
-import PhotoGallerySection from '../components/PhotoGallerySection';
-import { buildGalleryPhotos } from '../utils/photoGallery';
+import PhotoGallerySection from "../components/PhotoGallerySection";
+import { buildGalleryPhotos } from "../utils/photoGallery";
 
-const kenaxaxelModules = import.meta.glob('../assets/gallery/kenaxaxel26/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}', {
-  eager: true,
-});
+const kenaxaxelModules = import.meta.glob(
+  "../assets/gallery/kenaxaxel26/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}",
+  {
+    eager: true,
+  },
+);
 const kenaxaxelPhotos = buildGalleryPhotos(kenaxaxelModules);
-
 
 export default function Litters() {
   return (
@@ -34,7 +36,7 @@ export default function Litters() {
           <div className="imgcol">
             <Eyebrow>Dobermans</Eyebrow>
             <img
-              src={litterAnnouncement}
+              src={kenaPups}
               alt="Doberman litter announcement — pregnancy confirmed"
             />
           </div>
@@ -42,12 +44,32 @@ export default function Litters() {
             <Eyebrow>Update — Kena x Axel</Eyebrow>
             <h2 style={{ fontSize: 30 }}>Kena Nell × Sir Axel</h2>
             <h2 style={{ fontSize: 26, maxWidth: 600 }}>
-              Vet confirms 7–9 puppies on the way
+              🐾 THE PUPPIES ARE HERE! 🐾
             </h2>
             <p className="body-p" style={{ maxWidth: 640 }}>
-              Our vet estimates 7 to 9 puppies from the Kena x Axel litter. Mom
-              and babies are doing great — both are healthy and progressing well
-              as we count down to their arrival.
+              We are so excited to announce that Kena and Axel welcomed 12
+              beautiful, healthy puppies! ❤️
+            </p>
+            <h3>🎀 6 Females</h3>
+            <ul>
+              <li>3 Black & Rust</li>
+              <li>3 Red & Rust</li>
+            </ul>
+            <h3>💙 6 Males</h3>
+            <ul>
+              <li>3 Black & Rust</li>
+              <li>3 Red & Rust</li>
+            </ul>
+            <p>
+              Momma and all 12 babies are doing well, and we couldn’t be more
+              thankful. It has been a long, exciting night, so right now our
+              focus is on getting everyone settled, comfortable, and getting
+              some much-needed rest. 🐾❤️
+            </p>
+            <p>
+              We’ll share more details, pictures, and individual puppy updates
+              after Momma, babies, and humans have had a little time to rest. 😊
+              Welcome to the world, little ones! ❤️
             </p>
             <p className="body-p" style={{ marginTop: 6 }}>
               Young Spirit's Kena Nell, paired with Cedar Bluff's Sir Axel of
@@ -62,30 +84,7 @@ export default function Litters() {
               well-rounded Dobermans that can grow into confident, loyal, and
               devoted family companions.
             </p>
-            <ul
-              style={{
-                paddingLeft: 0,
-                listStyle: "none",
-                marginTop: 20,
-                display: "flex",
-                flexDirection: "column",
-                gap: 10,
-                fontSize: 14.5,
-              }}
-            >
-              <li>
-                <b style={{ color: "var(--brass-bright)" }}>Due:</b> September
-                20, 2026
-              </li>
-              <li>
-                <b style={{ color: "var(--brass-bright)" }}>Litter size:</b> Vet
-                confirms 7–9 puppies expected
-              </li>
-              <li>
-                <b style={{ color: "var(--brass-bright)" }}>Sex &amp; color:</b>{" "}
-                known once puppies arrive
-              </li>
-            </ul>
+            
             <a
               href="tel:2706054128"
               className="btn btn-primary"
@@ -95,16 +94,16 @@ export default function Litters() {
             </a>
           </div>
         </div>
-        <div className = "wrap">
-            {/*  */}
-          <PhotoGallerySection
-                    title=""
-                    photos={kenaxaxelPhotos}
-                    minTiles={6}
-                    style={{ marginTop: 44 }}
-                  />
+        <div className="wrap">
           {/*  */}
-          </div>
+          <PhotoGallerySection
+            title=""
+            photos={kenaxaxelPhotos}
+            minTiles={6}
+            style={{ marginTop: 44 }}
+          />
+          {/*  */}
+        </div>
       </section>
 
       <section className="border-b" id="rot-litter">
@@ -185,6 +184,8 @@ export default function Litters() {
               litter, your deposit rolls to the next one, or we'll talk through
               other options together.
             </p>
+            <h3>Payment Options</h3>
+            <p>For your convenience, Young Spirit accepts cash payments in person, or electronic payments through Apple Pay or Venmo.</p>
             <p className="body-p" style={{ opacity: 0.6, fontSize: 13.5 }}>
               A deposit isn't required just to join the general waitlist — but
               it does affect where you land in pick order.

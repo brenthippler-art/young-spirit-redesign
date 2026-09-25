@@ -13,7 +13,7 @@ export default function Home() {
       <div className="alertbar">
         <div className="wrap">
           <div className="txt">
-            🐾 <b>Litter Update: Kena x Axel</b> — Vet confirms 7 to 9 puppies expected. Mother and litter are in excellent health.
+            🐾 <b>Litter Update: Kena x Axel</b> — We are so excited to announce that Kena and Axel welcomed 12 beautiful, healthy puppies! ❤️
           </div>
           <Link to="/litters" className="pill">Reserve Your Pick →</Link>
         </div>
