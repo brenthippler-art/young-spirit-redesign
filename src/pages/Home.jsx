@@ -10,13 +10,13 @@ import "./Home.css";
 const BREEDS = [
   {
     name: "Dobermans",
-    to: "/our-dogs#dobermans",
+    to: "/our-dogs#doberman",
     img: dobermanImg,
     note: "Elegant. Alert. Devoted.",
   },
   {
     name: "Rottweilers",
-    to: "/our-dogs#rottweilers",
+    to: "/our-dogs#rottweiler",
     img: rottweilerImg,
     note: "Steady. Powerful. Loyal.",
   },
@@ -29,7 +29,7 @@ export default function Home() {
   const step = (dir) => setT((i) => (i + dir + list.length) % list.length);
 
   return (
-    <main>
+    <>
       {/* ---------- HERO ---------- */}
       <section className="hero">
         <img src={heroImg} alt="" className="hero__img" />
@@ -190,6 +190,6 @@ export default function Home() {
           </div>
         </Reveal>
       </section>
-    </main>
+    </>
   );
 }

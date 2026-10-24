@@ -1,34 +1,22 @@
 import { useState } from "react";
-import Eyebrow from "../components/Eyebrow";
-import DogTag from "../components/DogTag";
+import PageHero from "../components/PageHero";
+import DogProfile from "../components/DogProfile";
 import PhotoModal from "../components/PhotoModal";
-import kenaPhoto from "../assets/kena.jpeg";
-import saintPhoto from "../assets/saint.jpeg";
-import raiderPhoto from "../assets/raider.jpeg";
-import kenaPedigree from "../assets/pedigree.jpeg";
-import saintPedigree from "../assets/222C6997-8352-41BB-A3A1-9188BDEBFEB7.jpeg";
-import raiderPedigree from "../assets/7D7411B9-C7CB-49A5-B239-F6F728A6CA8B.jpeg";
+import Reveal from "../components/Reveal";
 import Seo from "../components/Seo";
+import { DOGS } from "../data/dogs";
+import heroPhoto from "../assets/gallery/dogs/watermarked-img-1788127096915-1-572437585_122211852464274100_1535396461349607346_n.jpg";
 
-// One shared list so the modal can step between every pedigree on the page
-// with prev/next, regardless of which section (Doberman or Rottweiler) the
-// person clicked into first.
-const PEDIGREES = [
-  {
-    src: kenaPedigree,
-    alt: "Kena Nell's pedigree chart",
-    name: "Young Spirit's Kena Nell",
-  },
-  {
-    src: saintPedigree,
-    alt: "Saint's pedigree chart",
-    name: "Young Spirit's Saint",
-  },
-  {
-    src: raiderPedigree,
-    alt: "Raider's pedigree chart",
-    name: "Young Spirit's Raider",
-  },
+// The modal steps through every pedigree on the page, in DOGS order.
+const PEDIGREES = DOGS.map((dog) => ({
+  src: dog.pedigree,
+  alt: `${dog.name}'s pedigree chart`,
+  name: dog.name,
+}));
+
+const BREED_SECTIONS = [
+  { id: "doberman", breed: "Doberman", eyebrow: "Dobermans", title: <>Elegant. Alert. <em>Devoted.</em></> },
+  { id: "rottweiler", breed: "Rottweiler", eyebrow: "Rottweilers", title: <>Steady. Powerful. <em>Loyal.</em></> },
 ];
 
 export default function OurDogs() {
@@ -41,85 +29,49 @@ export default function OurDogs() {
         description="Meet the AKC-registered Dobermans and Rottweilers behind our litters at Young Spirit Kennel in Bowling Green, Kentucky."
         path="/our-dogs"
       />
-      <section className="border-b" style={{ paddingTop: 120 }}>
-        <div className="wrap">
-          <Eyebrow>Our Dogs</Eyebrow>
-          <h1 style={{ fontSize: 44, maxWidth: 700 }}>
-            The dogs behind every litter
-          </h1>
-          <p className="body-p" style={{ maxWidth: 640 }}>
-            Every pairing is planned around health, temperament, structure, and
-            pedigree — never chosen at random. Here's the family doing the work.
-          </p>
-          <nav className="pill-nav" aria-label="Jump to section">
-            <a href="#doberman">Dobermans</a>
-            <a href="#rottweiler">Rottweilers</a>
-            <p>
-              All of our dogs are AKC registered. To help protect against fraud,
-              we do not publish registration numbers on our website — these are
-              available to verified buyers upon request. If you have any
-              questions about registration, please contact us directly via
-              email, phone call or FaceTime.{" "}
-            </p>
-          </nav>
-          <a
-            href="tel:2706054128"
-            className="btn btn-primary"
-            style={{ marginTop: 28 }}
-          >
-            Call or Text Now
-          </a>
-        </div>
-      </section>
 
-      <section className="border-b" id="doberman">
-        <div className="wrap">
-          <Eyebrow>Dobermans</Eyebrow>
-          <div className="dogtag-grid">
-            <DogTag
-              photoSrc={kenaPhoto}
-              photoPosition="center 37%"
-              noRivet
-              name="Young Spirit's Kena Nell"
-              meta="Doberman · Red & Rust · Dam"
-              pedigreeSrc={PEDIGREES[0].src}
-              pedigreeAlt={PEDIGREES[0].alt}
-              onPedigreeClick={() => setOpenIndex(0)}
-              description=""
-            />
-            <DogTag
-              photoSrc={saintPhoto}
-              photoPosition="center 25%"
-              noRivet
-              name="Young Spirit's Saint"
-              meta="Doberman · Black & Rust · Sire"
-              pedigreeSrc={PEDIGREES[1].src}
-              pedigreeAlt={PEDIGREES[1].alt}
-              onPedigreeClick={() => setOpenIndex(1)}
-              description=""
-            />
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Our Dogs"
+        title="The dogs behind every litter"
+        intro="Every pairing is planned around health, temperament, structure, and pedigree — never chosen at random. Here's the family doing the work."
+        image={heroPhoto}
+        imageAlt="A black and rust Doberman and a red Doberman sitting together in the woods"
+      >
+        <nav className="jump-links" aria-label="Jump to section">
+          <a href="#doberman">Dobermans</a>
+          <a href="#rottweiler">Rottweilers</a>
+        </nav>
+        <p className="page-hero__note">
+          All of our dogs are AKC registered. To help protect against fraud, we do not
+          publish registration numbers on our website — these are available to verified
+          buyers upon request.
+        </p>
+        <a href="tel:2706054128" className="btn btn--solid">Call or Text Now</a>
+      </PageHero>
 
-      <section id="rottweiler">
-        <div className="wrap">
-          <Eyebrow>Rottweilers</Eyebrow>
-          <div className="dogtag-grid">
-            <DogTag
-              name="Young Spirit's Raider"
-              photoSrc={raiderPhoto}
-              photoPosition="center 25%"
-              meta="Rottweiler · Sire"
-              pedigreeSrc={PEDIGREES[2].src}
-              pedigreeAlt={PEDIGREES[2].alt}
-              onPedigreeClick={() => setOpenIndex(2)}
-              noRivet
-              description="Available as stud."
-            />
+      {BREED_SECTIONS.map((section, sectionIndex) => (
+        <section
+          key={section.id}
+          id={section.id}
+          className={`section ${sectionIndex % 2 === 1 ? "section--surface" : ""}`}
+        >
+          <div className="wrap">
+            <Reveal className="section-head">
+              <p className="eyebrow">{section.eyebrow}</p>
+              <h2 className="title">{section.title}</h2>
+            </Reveal>
+
+            {DOGS.filter((dog) => dog.breed === section.breed).map((dog, i) => (
+              <DogProfile
+                key={dog.id}
+                dog={dog}
+                reverse={i % 2 === 1}
+                onPedigreeClick={() => setOpenIndex(DOGS.indexOf(dog))}
+              />
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
       <PhotoModal
         photos={PEDIGREES}

@@ -2,7 +2,9 @@ import Eyebrow from "../components/Eyebrow";
 import DogTag from "../components/DogTag";
 import { getTestimonials } from "../data/testimonials";
 import TestimonialCarousel from "../components/TestimonialCarousel";
-import Seo from '../components/Seo';
+import Seo from "../components/Seo";
+import PageHero from "../components/PageHero";
+import boardingPhoto from "../assets/gallery/boarding/watermarked-img-1788126981696-1-IMG_0233.jpeg";
 
 export default function Boarding() {
   return (
@@ -12,19 +14,17 @@ export default function Boarding() {
         description="Safe, attentive dog boarding in Bowling Green, Kentucky from Young Spirit Kennel. Call (270) 605-4128 to reserve a stay for your dog."
         path="/boarding"
       />
-      <section className="border-b" style={{ paddingTop: 120 }}>
-        <div className="wrap">
-          <Eyebrow>Boarding</Eyebrow>
-          <h1 style={{ fontSize: 44, maxWidth: 700 }}>
-            Care while you're away
-          </h1>
-          <p className="body-p" style={{ maxWidth: 600 }}>
-            Your dog stays with a family that treats every boarder like one of
-            our own — daily exercise, real attention, and a comfortable place to
-            wait for you.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Boarding"
+        title="Care while you're away"
+        intro="Your dog stays with a family that treats every boarder like one of our own — daily exercise, real attention, and a comfortable place to wait for you."
+        image={boardingPhoto}
+        imageAlt="A boarding guest at Young Spirit Kennel"
+      >
+        <a href="tel:2706054128" className="btn btn--solid">
+          Book a Stay
+        </a>
+      </PageHero>
 
       <section className="border-b">
         <div className="wrap two-col">

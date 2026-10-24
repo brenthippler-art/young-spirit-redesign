@@ -3,6 +3,8 @@ import { getTestimonials } from "../data/testimonials";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import logo from "../assets/logo.png";
 import Seo from "../components/Seo";
+import PageHero from "../components/PageHero";
+import saintPhoto from "../assets/saint.jpeg";
 
 export default function About() {
   return (
@@ -12,23 +14,20 @@ export default function About() {
         description="Get to know the family behind Young Spirit Kennel and how we raise AKC Dobermans and Rottweilers in Bowling Green, Kentucky."
         path="/about"
       />
-      <section className="border-b" style={{ paddingTop: 120 }}>
-        <div className="wrap">
-          <Eyebrow>About Our Kennel</Eyebrow>
-          <h1 style={{ fontSize: 44 }}>Welcome to Young Spirit Kennel</h1>
-          <p className="body-p" style={{ maxWidth: 680, fontSize: 16 }}>
-            Young Spirit Kennel represents our deep appreciation for family
-            connections and the remarkable spirit of dogs, whose unwavering
-            love, joy, and devotion enrich our lives daily.
-          </p>
-          <nav className="pill-nav" aria-label="Jump to section">
-            <a href="#story">Our Story</a>
-            <a href="#philosophy">Breeding Philosophy</a>
-            <a href="#visit">Visit or Call</a>
-            <a href="#reviews">Reviews</a>
-          </nav>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About Our Kennel"
+        title="Welcome to Young Spirit Kennel"
+        intro="Young Spirit Kennel represents our deep appreciation for family connections and the remarkable spirit of dogs, whose unwavering love, joy, and devotion enrich our lives daily."
+        image={saintPhoto}
+        imageAlt="Young Spirit's Saint"
+      >
+        <nav className="jump-links" aria-label="Jump to section">
+          <a href="#story">Our Story</a>
+          <a href="#philosophy">Breeding Philosophy</a>
+          <a href="#visit">Visit or Call</a>
+          <a href="#reviews">Reviews</a>
+        </nav>
+      </PageHero>
 
       <section className="border-b" id="story">
         <div className="wrap two-col">

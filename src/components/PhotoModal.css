@@ -1,0 +1,66 @@
+.photo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: clamp(4.5rem, 8vw, 6rem) clamp(1rem, 7vw, 6.5rem);
+  background: rgba(10, 8, 8, 0.95);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: modalFade 0.35s var(--ease);
+}
+.photo-modal {
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 1.1rem;
+  max-width: 1100px;
+}
+.photo-modal img {
+  max-width: 100%;
+  max-height: calc(100svh - 11rem);
+  object-fit: contain;
+}
+.photo-modal-caption {
+  display: flex;
+  gap: 1.5rem;
+  align-items: baseline;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--cream);
+}
+.photo-modal-counter {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+/* Round outline buttons, matching the testimonial arrows */
+.photo-modal-close,
+.photo-modal-nav {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(16, 13, 13, 0.6);
+  border: 1px solid var(--hairline);
+  color: var(--cream);
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+.photo-modal-close:hover,
+.photo-modal-nav:hover { border-color: var(--brass); color: var(--brass); }
+
+.photo-modal-close { top: 1.25rem; right: 1.25rem; width: 48px; height: 48px; font-size: 1rem; }
+.photo-modal-nav { top: 50%; transform: translateY(-50%); width: 56px; height: 56px; font-size: 1.2rem; }
+.photo-modal-nav.prev { left: 1.25rem; }
+.photo-modal-nav.next { right: 1.25rem; }
+
+@keyframes modalFade { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .photo-modal-backdrop { animation: none; } }
+
+@media (max-width: 600px) {
+  .photo-modal-nav { top: auto; bottom: 1.25rem; transform: none; }
+}

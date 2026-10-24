@@ -6,6 +6,7 @@ import { buildGalleryPhotos } from "../utils/photoGallery";
 import Seo from "../components/Seo";
 import PuppyTable from "../components/PuppyTable";
 import { useEffect } from "react";
+import PageHero from "../components/PageHero";
 
 const kenaxaxelModules = import.meta.glob(
   "../assets/gallery/kenaxaxel26/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}",
@@ -49,13 +50,11 @@ export default function Litters() {
         description="See current and upcoming AKC Doberman and Rottweiler litters from Young Spirit Kennel in Bowling Green, Kentucky. Contact us about reserving a puppy."
         path="/litters"
       />
-      <section className="border-b" style={{ paddingTop: 120 }}>
-        <div className="wrap">
-          <Eyebrow>Litters</Eyebrow>
-          <h1 style={{ fontSize: 44, maxWidth: 700 }}>
-            Available &amp; upcoming litters
-          </h1>
-          <p>
+      <PageHero
+        eyebrow="Litters"
+        title="Available & upcoming litters"
+        intro={
+          <>
             To view our listings on AKC Marketplace,{" "}
             <a
               href="https://marketplace.akc.org/breeder/megan-faulkner-198244"
@@ -65,23 +64,26 @@ export default function Litters() {
               click here
             </a>
             .
-          </p>
-          <nav className="pill-nav" aria-label="Jump to section">
-            <a href="#dob-litter">Dobermans</a>
-            <a href="#rot-litter">Rottweilers</a>
-            <a href="#included">What's Included</a>
-            <a href="#waitlist">Deposits &amp; Waitlist</a>
-            <a href="#agreement">Puppy Purchase Agreements</a>
-          </nav>
-          <button
-            type="button"
-            className="btn btn-primary ml-onclick-form"
-            onClick={() => window.ml?.("show", "8QT94N", true)}
-          >
-            Get Litter Alerts
-          </button>
-        </div>
-      </section>
+          </>
+        }
+        image={groupPhoto}
+        imageAlt="Kena x Axel litter"
+      >
+        <nav className="jump-links" aria-label="Jump to section">
+          <a href="#dob-litter">Dobermans</a>
+          <a href="#rot-litter">Rottweilers</a>
+          <a href="#included">What's Included</a>
+          <a href="#waitlist">Deposits &amp; Waitlist</a>
+          <a href="#agreement">Puppy Purchase Agreements</a>
+        </nav>
+        <button
+          type="button"
+          className="btn btn--solid ml-onclick-form"
+          onClick={() => window.ml?.("show", "8QT94N", true)}
+        >
+          Get Litter Alerts
+        </button>
+      </PageHero>
 
       <section className="border-b" id="dob-litter">
         <div className="wrap two-col">
@@ -133,7 +135,15 @@ export default function Litters() {
               Lafayette, Tennessee.
             </p>
             <p>
-              This pairing was thoughtfully chosen with the qualities we value in the Doberman breed in mind. We believe Kena and Axel complement one another well in temperament, structure, and overall breed type, and we’re excited to see the potential of this combination come together in their first litter. Our goal is to produce well-rounded Dobermans that can grow into confident, loyal, and devoted family companions. These pups are 75% European and 25% American.  Kena is 50/50 regular weight 85lbs and Axel is 100% European and weight reg 105lbs.
+              This pairing was thoughtfully chosen with the qualities we value
+              in the Doberman breed in mind. We believe Kena and Axel complement
+              one another well in temperament, structure, and overall breed
+              type, and we’re excited to see the potential of this combination
+              come together in their first litter. Our goal is to produce
+              well-rounded Dobermans that can grow into confident, loyal, and
+              devoted family companions. These pups are 75% European and 25%
+              American. Kena is 50/50 regular weight 85lbs and Axel is 100%
+              European and weight reg 105lbs.
             </p>
           </div>
         </div>

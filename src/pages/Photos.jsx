@@ -1,7 +1,7 @@
-import Eyebrow from "../components/Eyebrow";
 import PhotoGallerySection from "../components/PhotoGallerySection";
 import { buildGalleryPhotos } from "../utils/photoGallery";
 import Seo from "../components/Seo";
+import PageHero from "../components/PageHero";
 
 // Each gallery is its own folder under src/assets/gallery/ — drop a photo
 // into the matching folder and it shows up here automatically, no code
@@ -40,36 +40,19 @@ export default function Photos() {
         description="Browse photos of the Dobermans, Rottweilers, puppies, and boarding guests at Young Spirit Kennel in Bowling Green, Kentucky."
         path="/photos"
       />
-      <section style={{ paddingTop: 120 }}>
-        <div className="wrap">
-          <Eyebrow>Photos</Eyebrow>
-          <h1 style={{ fontSize: 44, maxWidth: 700 }}>
-            Our dogs, our puppies, our family
-          </h1>
-          <p className="body-p" style={{ maxWidth: 600 }}>
-            Every photo published here is watermarked to protect our dogs and
-            our families from misuse.
-          </p>
+      <PageHero
+  eyebrow="Photos"
+  title="Our dogs, our puppies, our family"
+  intro="Every photo published here is watermarked to protect our dogs and our families from misuse."
+/>
 
-          <PhotoGallerySection
-            title="Meet the family"
-            photos={dogsPhotos}
-            minTiles={6}
-            style={{ marginTop: 44 }}
-          />
-          <PhotoGallerySection
-            title="Kena x Axel Litter 2026"
-            photos={kenaxaxelPhotos}
-            minTiles={6}
-            style={{ marginTop: 44 }}
-          />
-          <PhotoGallerySection
-            title="Boarding guests having a good time"
-            photos={boardingPhotos}
-            minTiles={6}
-          />
-        </div>
-      </section>
+<section className="section">
+  <div className="wrap">
+    <PhotoGallerySection title="Meet the family" photos={dogsPhotos} minTiles={6} />
+    <PhotoGallerySection title="Kena x Axel Litter 2026" photos={kenaxaxelPhotos} minTiles={6} style={{ marginTop: 44 }} />
+    <PhotoGallerySection title="Boarding guests having a good time" photos={boardingPhotos} minTiles={6} style={{ marginTop: 44 }} />
+  </div>
+</section>
     </>
   );
 }

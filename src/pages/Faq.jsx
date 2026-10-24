@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Eyebrow from "../components/Eyebrow";
 import FaqItem from "../components/FaqItem";
 import Seo from "../components/Seo";
+import PageHero from "../components/PageHero";
 
 export default function Faq() {
   return (
@@ -11,11 +11,14 @@ export default function Faq() {
         description="Answers to common questions about buying a Doberman or Rottweiler puppy and boarding your dog at Young Spirit Kennel in Bowling Green, Kentucky."
         path="/faq"
       />
-      <section style={{ paddingTop: 120 }}>
-        <div className="wrap">
-          <Eyebrow>FAQ</Eyebrow>
-          <h1 style={{ fontSize: 44, maxWidth: 700 }}>Common questions</h1>
+      <PageHero
+        eyebrow="FAQ"
+        title="Common questions"
+        intro="Puppies, deposits, payments and boarding — the answers families ask for most."
+      />
 
+      <section className="section">
+        <div className="wrap">
           <div
             className="kicker-block"
             style={{ marginTop: 20, maxWidth: "100%" }}

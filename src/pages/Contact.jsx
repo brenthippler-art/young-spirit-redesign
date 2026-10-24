@@ -2,6 +2,7 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import Eyebrow from "../components/Eyebrow";
 import Seo from "../components/Seo";
+import PageHero from "../components/PageHero";
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -58,18 +59,11 @@ export default function Contact() {
         description="Reach Young Spirit Kennel in Bowling Green, KY about puppies, litters, or boarding. Call (270) 605-4128 or send us a message online."
         path="/contact"
       />
-      <section className="border-b" style={{ paddingTop: 120 }}>
-        <div className="wrap">
-          <Eyebrow>Contact Us</Eyebrow>
-          <h1 style={{ fontSize: 44, maxWidth: 700 }}>
-            Reach out — call, text, or message
-          </h1>
-          <p className="body-p" style={{ maxWidth: 600 }}>
-            Whether you're asking about an upcoming litter, boarding a dog, or
-            just want to say hello, we're easiest to reach by phone.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact Us"
+        title="Reach out — call, text, or message"
+        intro="Whether you're asking about an upcoming litter, boarding a dog, or just want to say hello, we're easiest to reach by phone."
+      />
 
       <section className="border-b">
         <div className="wrap two-col">

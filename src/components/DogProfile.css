@@ -1,0 +1,94 @@
+.dog-profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+}
+.dog-profile + .dog-profile { margin-top: clamp(4.5rem, 10vw, 8rem); }
+.dog-profile--reverse .dog-profile__media { order: 2; }
+
+/* Framed portrait (same frame as the page hero) */
+.dog-profile__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.dog-profile__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+.dog-profile:hover .dog-profile__media img { transform: scale(1.03); }
+.dog-profile__media::after {
+  content: '';
+  position: absolute;
+  inset: 0.9rem;
+  border: 1px solid rgba(176, 141, 87, 0.45);
+  pointer-events: none;
+}
+
+.dog-profile__name { font-size: clamp(2.5rem, 5vw, 4rem); }
+.dog-profile__prefix {
+  display: block;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--brass);
+  letter-spacing: 0;
+  margin-bottom: 0.6rem;
+}
+
+.dog-profile__details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 1rem;
+  margin: 2.25rem 0;
+  padding-block: 1.4rem;
+  border-block: 1px solid var(--hairline);
+}
+.dog-profile__details dt {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 0.35rem;
+}
+.dog-profile__details dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--cream);
+}
+
+.dog-profile__desc { color: var(--text-muted); margin: 0 0 2rem; max-width: 32rem; }
+
+/* Pedigree button: thumbnail + label */
+.dog-profile__pedigree {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.7rem 1.6rem 0.7rem 0.7rem;
+  background: none;
+  border: 1px solid var(--hairline);
+  color: var(--cream);
+  font: 400 0.95rem var(--font-body);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+}
+.dog-profile__pedigree:hover { border-color: var(--brass); background: rgba(176, 141, 87, 0.06); }
+.dog-profile__pedigree img { width: 92px; height: 62px; object-fit: cover; }
+.dog-profile__pedigree-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 0.2rem;
+}
+
+@media (max-width: 900px) {
+  .dog-profile { grid-template-columns: 1fr; }
+  .dog-profile--reverse .dog-profile__media { order: 0; }
+}
