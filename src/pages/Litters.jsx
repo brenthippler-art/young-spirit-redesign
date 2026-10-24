@@ -1,8 +1,11 @@
 import Eyebrow from "../components/Eyebrow";
-import kenaPups from "../assets/gallery/kenaxaxel26/watermarked-kena-puppies.jpg";
+import groupPhoto from "../assets/gallery/kenaxaxel26/ptuppy-litter.jpeg";
 import waitlistGraphic from "../assets/waitlist.png";
 import PhotoGallerySection from "../components/PhotoGallerySection";
 import { buildGalleryPhotos } from "../utils/photoGallery";
+import Seo from "../components/Seo";
+import PuppyTable from "../components/PuppyTable";
+import { useEffect } from "react";
 
 const kenaxaxelModules = import.meta.glob(
   "../assets/gallery/kenaxaxel26/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}",
@@ -13,14 +16,56 @@ const kenaxaxelModules = import.meta.glob(
 const kenaxaxelPhotos = buildGalleryPhotos(kenaxaxelModules);
 
 export default function Litters() {
+  useEffect(() => {
+    // Check whether the popup already showed during this visit
+    let alreadyShown = false;
+    try {
+      alreadyShown = sessionStorage.getItem("litterPopupShown") === "true";
+    } catch {
+      // Storage can be blocked in some privacy settings; treat as not shown
+    }
+
+    // If it already showed, stop here and don't set a timer
+    if (alreadyShown) return;
+
+    const timer = setTimeout(() => {
+      window.ml?.("show", "8QT94N", false);
+
+      // Mark it as shown so it won't fire again this visit
+      try {
+        sessionStorage.setItem("litterPopupShown", "true");
+      } catch {
+        // If storage is blocked, the popup may show again; not a big deal
+      }
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
+      <Seo
+        title="Doberman & Rottweiler Puppies in KY"
+        description="See current and upcoming AKC Doberman and Rottweiler litters from Young Spirit Kennel in Bowling Green, Kentucky. Contact us about reserving a puppy."
+        path="/litters"
+      />
       <section className="border-b" style={{ paddingTop: 120 }}>
         <div className="wrap">
           <Eyebrow>Litters</Eyebrow>
           <h1 style={{ fontSize: 44, maxWidth: 700 }}>
             Available &amp; upcoming litters
           </h1>
+          <p>
+            To view our listings on AKC Marketplace,{" "}
+            <a
+              href="https://marketplace.akc.org/breeder/megan-faulkner-198244"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              click here
+            </a>
+            .
+          </p>
           <nav className="pill-nav" aria-label="Jump to section">
             <a href="#dob-litter">Dobermans</a>
             <a href="#rot-litter">Rottweilers</a>
@@ -28,6 +73,13 @@ export default function Litters() {
             <a href="#waitlist">Deposits &amp; Waitlist</a>
             <a href="#agreement">Puppy Purchase Agreements</a>
           </nav>
+          <button
+            type="button"
+            className="btn btn-primary ml-onclick-form"
+            onClick={() => window.ml?.("show", "8QT94N", true)}
+          >
+            Get Litter Alerts
+          </button>
         </div>
       </section>
 
@@ -36,7 +88,7 @@ export default function Litters() {
           <div className="imgcol">
             <Eyebrow>Dobermans</Eyebrow>
             <img
-              src={kenaPups}
+              src={groupPhoto}
               alt="Doberman litter announcement — pregnancy confirmed"
             />
           </div>
@@ -46,53 +98,58 @@ export default function Litters() {
             <h2 style={{ fontSize: 26, maxWidth: 600 }}>
               🐾 THE PUPPIES ARE HERE! 🐾
             </h2>
+
+            <a
+              href="https://marketplace.akc.org/breeder/megan-faulkner-198244/doberman-pinscher/581958"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View this litter on AKC Marketplace.
+            </a>
+
             <p className="body-p" style={{ maxWidth: 640 }}>
               We are so excited to announce that Kena and Axel welcomed 12
               beautiful, healthy puppies! ❤️
             </p>
-            <h3>🎀 6 Females</h3>
-            <ul>
-              <li>3 Black & Rust</li>
-              <li>3 Red & Rust</li>
-            </ul>
-            <h3>💙 6 Males</h3>
-            <ul>
-              <li>3 Black & Rust</li>
-              <li>3 Red & Rust</li>
-            </ul>
-            <p>
-              Momma and all 12 babies are doing well, and we couldn’t be more
-              thankful. It has been a long, exciting night, so right now our
-              focus is on getting everyone settled, comfortable, and getting
-              some much-needed rest. 🐾❤️
-            </p>
-            <p>
-              We’ll share more details, pictures, and individual puppy updates
-              after Momma, babies, and humans have had a little time to rest. 😊
-              Welcome to the world, little ones! ❤️
-            </p>
+
+            <div className="breakdown">
+              <div className="sex">
+                <h3>🎀 6 Females</h3>
+                <ul>
+                  <li>3 Black & Rust</li>
+                  <li>3 Red & Rust</li>
+                </ul>
+              </div>
+              <div className="sex">
+                <h3>💙 6 Males</h3>
+                <ul>
+                  <li>3 Black & Rust</li>
+                  <li>3 Red & Rust</li>
+                </ul>
+              </div>
+            </div>
             <p className="body-p" style={{ marginTop: 6 }}>
               Young Spirit's Kena Nell, paired with Cedar Bluff's Sir Axel of
               Lafayette, Tennessee.
             </p>
             <p>
-              This pairing was thoughtfully chosen with the qualities we value
-              in the Doberman breed in mind. We believe Kena and Axel complement
-              one another well in temperament, structure, and overall breed
-              type, and we’re excited to see the potential of this combination
-              come together in their first litter. Our goal is to produce
-              well-rounded Dobermans that can grow into confident, loyal, and
-              devoted family companions.
+              This pairing was thoughtfully chosen with the qualities we value in the Doberman breed in mind. We believe Kena and Axel complement one another well in temperament, structure, and overall breed type, and we’re excited to see the potential of this combination come together in their first litter. Our goal is to produce well-rounded Dobermans that can grow into confident, loyal, and devoted family companions. These pups are 75% European and 25% American.  Kena is 50/50 regular weight 85lbs and Axel is 100% European and weight reg 105lbs.
             </p>
-            
-            <a
-              href="tel:2706054128"
-              className="btn btn-primary"
-              style={{ marginTop: 24 }}
-            >
-              Call or Text to Reserve Your Pick
-            </a>
           </div>
+        </div>
+        <div className="cta">
+          <a
+            href="tel:2706054128"
+            className="btn btn-primary"
+            style={{ marginTop: 24, width: 330 }}
+          >
+            Call or Text to Reserve Your Pick
+          </a>
+        </div>
+        <div className="wrap">
+          <Eyebrow>Kena x Axel · 2026</Eyebrow>
+          <h2>Meet the puppies</h2>
+          <PuppyTable />
         </div>
         <div className="wrap">
           {/*  */}
@@ -103,6 +160,15 @@ export default function Litters() {
             style={{ marginTop: 44 }}
           />
           {/*  */}
+        </div>
+        <div className="cta">
+          <a
+            href="tel:2706054128"
+            className="btn btn-primary"
+            style={{ marginTop: 24, width: 330 }}
+          >
+            Call or Text to Reserve Your Pick
+          </a>
         </div>
       </section>
 
@@ -185,7 +251,10 @@ export default function Litters() {
               other options together.
             </p>
             <h3>Payment Options</h3>
-            <p>For your convenience, Young Spirit accepts cash payments in person, or electronic payments through Apple Pay or Venmo.</p>
+            <p>
+              For your convenience, Young Spirit accepts cash payments in
+              person, or electronic payments through Apple Pay or Venmo.
+            </p>
             <p className="body-p" style={{ opacity: 0.6, fontSize: 13.5 }}>
               A deposit isn't required just to join the general waitlist — but
               it does affect where you land in pick order.

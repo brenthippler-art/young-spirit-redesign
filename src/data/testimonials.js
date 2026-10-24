@@ -12,6 +12,12 @@ export const TESTIMONIALS = [
     rating: "5",
     category: 'boarding',
   },
+  {
+    quote: 'I have reached out to different breeders over the years and never had the experience I had with the folks at Young Spirit. Answered my questions almost immediately and went beyond normal communication by sending photos and videos of the latest additions to their family. Even when I came to the conclusion it wasn’t the right time for us to add to our family they were so kind , so respectful of my decision. So thankful to find Young Spirit! Truly wonderful people!',
+    who: "Rebekah J.",
+    rating: "5",
+    category: 'boarding',
+  },
 ];
 
 export function getTestimonials(category) {

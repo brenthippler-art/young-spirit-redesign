@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://youngspiritkennel.com/sitemap.xml

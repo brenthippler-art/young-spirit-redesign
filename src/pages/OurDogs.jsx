@@ -8,6 +8,7 @@ import raiderPhoto from "../assets/raider.jpeg";
 import kenaPedigree from "../assets/pedigree.jpeg";
 import saintPedigree from "../assets/222C6997-8352-41BB-A3A1-9188BDEBFEB7.jpeg";
 import raiderPedigree from "../assets/7D7411B9-C7CB-49A5-B239-F6F728A6CA8B.jpeg";
+import Seo from "../components/Seo";
 
 // One shared list so the modal can step between every pedigree on the page
 // with prev/next, regardless of which section (Doberman or Rottweiler) the
@@ -35,6 +36,11 @@ export default function OurDogs() {
 
   return (
     <>
+      <Seo
+        title="Our Doberman & Rottweiler Breeding Dogs"
+        description="Meet the AKC-registered Dobermans and Rottweilers behind our litters at Young Spirit Kennel in Bowling Green, Kentucky."
+        path="/our-dogs"
+      />
       <section className="border-b" style={{ paddingTop: 120 }}>
         <div className="wrap">
           <Eyebrow>Our Dogs</Eyebrow>

@@ -1,0 +1,80 @@
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  padding-block: 1.4rem;
+  background: rgba(16, 13, 13, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(176, 141, 87, 0.12);
+  transition: background 0.5s var(--ease), padding 0.5s var(--ease), border-color 0.5s var(--ease);
+}
+.site-header.is-solid {
+  background: rgba(16, 13, 13, 0.9);
+  padding-block: 1rem;
+  border-color: var(--hairline);
+}
+
+.site-header__inner { display: flex; align-items: center; justify-content: space-between; }
+
+.site-header__brand {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--cream);
+  letter-spacing: -0.01em;
+}
+.site-header__brand span { font-style: italic; color: var(--brass); }
+
+.site-nav { display: flex; align-items: center; gap: 2.4rem; }
+.site-nav__link {
+  position: relative;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.3s var(--ease);
+}
+.site-nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 100%; height: 1px;
+  background: var(--brass);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s var(--ease);
+}
+.site-nav__link:hover, .site-nav__link.active { color: var(--cream); }
+.site-nav__link:hover::after, .site-nav__link.active::after { transform: scaleX(1); transform-origin: left; }
+.site-nav__cta { padding: 0.85rem 1.5rem; }
+
+.site-header__toggle { display: none; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 900px) {
+  .site-header__toggle {
+    display: grid;
+    gap: 7px;
+    width: 44px; height: 44px;
+    place-content: center;
+    background: none; border: 0; cursor: pointer;
+    position: relative; z-index: 2;
+  }
+  .site-header__toggle span {
+    width: 26px; height: 1px; background: var(--cream);
+    transition: transform 0.4s var(--ease);
+  }
+  .site-header__toggle.is-open span:first-child { transform: translateY(4px) rotate(45deg); }
+  .site-header__toggle.is-open span:last-child  { transform: translateY(-4px) rotate(-45deg); }
+
+  .site-nav {
+    position: fixed; inset: 0;
+    flex-direction: column; justify-content: center; gap: 2rem;
+    background: var(--onyx);
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.5s var(--ease), visibility 0.5s;
+  }
+  .site-nav.is-open { opacity: 1; visibility: visible; }
+  .site-nav__link { font-family: var(--font-display); font-size: 2rem; letter-spacing: 0; text-transform: none; }
+}

@@ -1,11 +1,17 @@
 import Eyebrow from "../components/Eyebrow";
-import { getTestimonials } from '../data/testimonials';
+import { getTestimonials } from "../data/testimonials";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import logo from "../assets/logo.png";
+import Seo from "../components/Seo";
 
 export default function About() {
   return (
     <>
+      <Seo
+        title="About Our Kennel in Bowling Green, KY"
+        description="Get to know the family behind Young Spirit Kennel and how we raise AKC Dobermans and Rottweilers in Bowling Green, Kentucky."
+        path="/about"
+      />
       <section className="border-b" style={{ paddingTop: 120 }}>
         <div className="wrap">
           <Eyebrow>About Our Kennel</Eyebrow>
@@ -28,9 +34,7 @@ export default function About() {
         <div className="wrap two-col">
           <div>
             <Eyebrow>Two words, one name</Eyebrow>
-            <h2 style={{ fontSize: 30, maxWidth: 600 }}>
-              Young Spirit
-            </h2>
+            <h2 style={{ fontSize: 30, maxWidth: 600 }}>Young Spirit</h2>
 
             <p className="body-p">
               "Young" comes from a family maiden name, and it also reflects the
@@ -97,9 +101,7 @@ export default function About() {
         <div className="wrap">
           <Eyebrow>Visit or Call</Eyebrow>
           <h2 style={{ fontSize: 28 }}>Bowling Green, Kentucky</h2>
-          <div
-            className="cards3"
-          >
+          <div className="cards3">
             <div className="navcard">
               <div className="k">Location</div>
               <h3 style={{ fontSize: 17 }}>Bowling Green, KY</h3>
@@ -125,7 +127,7 @@ export default function About() {
           <h2 style={{ fontSize: 28 }}>
             Reviews from puppy &amp; boarding families
           </h2>
-          <TestimonialCarousel testimonials={getTestimonials('boarding')} />
+          <TestimonialCarousel testimonials={getTestimonials("boarding")} />
         </div>
       </section>
     </>
