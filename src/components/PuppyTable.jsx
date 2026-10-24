@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PhotoModal from './PhotoModal';
 import { KENA_AXEL_PUPPIES } from '../data/kenaxaxel26';
+import './PuppyTable.css';
 
 // Load every .jpeg in the litter folder at build time, the same technique
 // as the Photos page, so we can look images up by filename instead of
