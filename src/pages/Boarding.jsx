@@ -1,7 +1,7 @@
 import Eyebrow from "../components/Eyebrow";
 import DogTag from "../components/DogTag";
 import { getTestimonials } from "../data/testimonials";
-import TestimonialCarousel from "../components/TestimonialCarousel";
+import TestimonialFeature from "../components/TestimonialFeature";
 import Seo from "../components/Seo";
 import PageHero from "../components/PageHero";
 import boardingPhoto from "../assets/gallery/boarding/watermarked-img-1788126981696-1-IMG_0233.jpeg";
@@ -99,12 +99,12 @@ export default function Boarding() {
         </div>
       </section>
 
-      <section id="reviews">
-        <div className="wrap">
-          <Eyebrow>What Boarding Families Say</Eyebrow>
-          <h2 style={{ fontSize: 26 }}>A few kind words</h2>
-          <TestimonialCarousel testimonials={getTestimonials("boarding")} />
-        </div>
+      <section className="section section--surface" id="reviews">
+        <TestimonialFeature
+          testimonials={getTestimonials("boarding")}
+          eyebrow="What Boarding Families Say"
+          showReviewLink
+        />
       </section>
     </>
   );

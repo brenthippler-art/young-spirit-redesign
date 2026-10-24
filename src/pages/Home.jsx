@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal";
+import TestimonialFeature from "../components/TestimonialFeature";
 import { TESTIMONIALS } from '../data/testimonials';
 import heroImg from "../assets/home/hero.png";
 import dobermanImg from "../assets/home/doberman.jpeg";
@@ -23,11 +23,6 @@ const BREEDS = [
 ];
 
 export default function Home() {
-  const [t, setT] = useState(0);
-  const list = TESTIMONIALS;
-  const quote = list[t];
-  const step = (dir) => setT((i) => (i + dir + list.length) % list.length);
-
   return (
     <>
       {/* ---------- HERO ---------- */}
@@ -141,38 +136,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- TESTIMONIAL ---------- */}
-      {quote && (
-        <section className="section section--surface">
-          <Reveal className="wrap testimonial">
-            <p className="eyebrow">From Our Families</p>
-            <blockquote aria-live="polite">
-              <div
-                className="testimonial__stars"
-                aria-label={`${quote.rating} out of 5 stars`}
-              >
-                {"★".repeat(Number(quote.rating))}
-              </div>
-              <p>“{quote.quote}”</p>
-              <footer>— {quote.who}</footer>
-            </blockquote>
-            {list.length > 1 && (
-              <div className="testimonial__controls">
-                <button onClick={() => step(-1)} aria-label="Previous review">
-                  ←
-                </button>
-                <span>
-                  {String(t + 1).padStart(2, "0")} /{" "}
-                  {String(list.length).padStart(2, "0")}
-                </span>
-                <button onClick={() => step(1)} aria-label="Next review">
-                  →
-                </button>
-              </div>
-            )}
-          </Reveal>
-        </section>
-      )}
+         {/* ---------- TESTIMONIAL ---------- */}
+   <section className="section section--surface">
+     <TestimonialFeature testimonials={TESTIMONIALS} showReviewLink />
+   </section>
 
       {/* ---------- CLOSING CTA ---------- */}
       <section className="section cta">

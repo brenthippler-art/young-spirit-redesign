@@ -1,6 +1,6 @@
 import Eyebrow from "../components/Eyebrow";
-import { getTestimonials } from "../data/testimonials";
-import TestimonialCarousel from "../components/TestimonialCarousel";
+import { TESTIMONIALS } from "../data/testimonials";
+import TestimonialFeature from "../components/TestimonialFeature";
 import logo from "../assets/logo.png";
 import Seo from "../components/Seo";
 import PageHero from "../components/PageHero";
@@ -120,14 +120,12 @@ export default function About() {
         </div>
       </section>
 
-      <section id="reviews">
-        <div className="wrap">
-          <Eyebrow>What Families Say</Eyebrow>
-          <h2 style={{ fontSize: 28 }}>
-            Reviews from puppy &amp; boarding families
-          </h2>
-          <TestimonialCarousel testimonials={getTestimonials("boarding")} />
-        </div>
+      <section className="section section--surface" id="reviews">
+        <TestimonialFeature
+          testimonials={TESTIMONIALS}
+          eyebrow="What Families Say"
+          showReviewLink
+        />
       </section>
     </>
   );

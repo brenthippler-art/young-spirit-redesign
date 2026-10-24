@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import PageHero from "../components/PageHero";
 import PuppyTable from "../components/PuppyTable";
-import PhotoGallerySection from "../components/PhotoGallerySection";
+import PhotoGallery from "../components/PhotoGallery";
 import Reveal from "../components/Reveal";
 import Seo from "../components/Seo";
 import { buildGalleryPhotos } from "../utils/photoGallery";
@@ -14,7 +14,10 @@ const kenaxaxelModules = import.meta.glob(
   "../assets/gallery/kenaxaxel26/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}",
   { eager: true },
 );
-const kenaxaxelPhotos = buildGalleryPhotos(kenaxaxelModules);
+const kenaxaxelPhotos = buildGalleryPhotos(
+  kenaxaxelModules,
+  "Kena x Axel litter photo",
+);
 
 // ---------- Litter numbers, calculated from the puppy data ----------
 const puppies = KENA_AXEL_PUPPIES;
@@ -160,7 +163,11 @@ export default function Litters() {
       <section className="section" id="dob-litter">
         <div className="wrap litter-feature">
           <Reveal className="litter-feature__media framed">
-            <img src={litterPhoto} alt="The Kena x Axel Doberman puppies" loading="lazy" />
+            <img
+              src={litterPhoto}
+              alt="The Kena x Axel Doberman puppies"
+              loading="lazy"
+            />
           </Reveal>
 
           <Reveal delay={150}>
@@ -197,14 +204,14 @@ export default function Litters() {
               </p>
               <p>
                 This pairing was thoughtfully chosen with the qualities we value
-                in the Doberman breed in mind. We believe Kena and Axel complement
-                one another well in temperament, structure, and overall breed
-                type, and we're excited to see the potential of this combination
-                come together in their first litter. Our goal is to produce
-                well-rounded Dobermans that can grow into confident, loyal, and
-                devoted family companions. These pups are 75% European and 25%
-                American. Kena is 50/50 regular weight 85lbs and Axel is 100%
-                European and weight reg 105lbs.
+                in the Doberman breed in mind. We believe Kena and Axel
+                complement one another well in temperament, structure, and
+                overall breed type, and we're excited to see the potential of
+                this combination come together in their first litter. Our goal
+                is to produce well-rounded Dobermans that can grow into
+                confident, loyal, and devoted family companions. These pups are
+                75% European and 25% American. Kena is 50/50 regular weight
+                85lbs and Axel is 100% European and weight reg 105lbs.
               </p>
             </div>
 
@@ -238,7 +245,8 @@ export default function Litters() {
           <PuppyTable />
 
           <div className="litter-gallery">
-            <PhotoGallerySection title="More from the litter" photos={kenaxaxelPhotos} />
+            <h3 className="litter-gallery__title">More from the litter</h3>
+            <PhotoGallery photos={kenaxaxelPhotos} />
           </div>
 
           <div className="center-cta">
@@ -256,8 +264,8 @@ export default function Litters() {
             <p className="eyebrow">Rottweilers</p>
             <h2 className="title">No litters currently planned</h2>
             <p>
-              Interested in a Young Spirit Raider pup down the road? Reach out and
-              we'll add you to the interest list.
+              Interested in a Young Spirit Raider pup down the road? Reach out
+              and we'll add you to the interest list.
             </p>
           </div>
           <div className="rot-band__actions">
@@ -288,7 +296,9 @@ export default function Litters() {
           <div className="services">
             {INCLUDED.map((item, i) => (
               <Reveal key={item.title} className="service" delay={i * 120}>
-                <span className="service__num">{String(i + 1).padStart(2, "0")}</span>
+                <span className="service__num">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </Reveal>
@@ -296,8 +306,8 @@ export default function Litters() {
           </div>
 
           <p className="litter-note">
-            Pricing shared directly when you reach out — every litter is a little
-            different.
+            Pricing shared directly when you reach out — every litter is a
+            little different.
           </p>
         </div>
       </section>
@@ -329,8 +339,8 @@ export default function Litters() {
               <li>Venmo</li>
             </ul>
             <p>
-              A deposit isn't required just to join the general waitlist — but it
-              does affect where you land in pick order.
+              A deposit isn't required just to join the general waitlist — but
+              it does affect where you land in pick order.
             </p>
           </Reveal>
         </div>
@@ -357,8 +367,8 @@ export default function Litters() {
             </p>
             <p>
               Whether your puppy is going home with or without breeding rights,
-              our priority remains the same — a happy, healthy, well-loved dog and
-              a wonderful addition to your family.
+              our priority remains the same — a happy, healthy, well-loved dog
+              and a wonderful addition to your family.
             </p>
             <p>
               Please review the agreement. We'll go over and complete everything
@@ -379,7 +389,9 @@ export default function Litters() {
                   <span className="doc-link__type">Puppy Agreement · PDF</span>
                   <span className="doc-link__title">{doc.title}</span>
                 </span>
-                <span className="doc-link__arrow" aria-hidden="true">→</span>
+                <span className="doc-link__arrow" aria-hidden="true">
+                  →
+                </span>
               </a>
             ))}
           </Reveal>

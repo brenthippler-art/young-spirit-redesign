@@ -1,36 +1,46 @@
-import PhotoGallerySection from "../components/PhotoGallerySection";
-import { buildGalleryPhotos } from "../utils/photoGallery";
-import Seo from "../components/Seo";
+import PhotoGallery from "../components/PhotoGallery";
 import PageHero from "../components/PageHero";
+import Reveal from "../components/Reveal";
+import Seo from "../components/Seo";
+import { buildGalleryPhotos } from "../utils/photoGallery";
 
 // Each gallery is its own folder under src/assets/gallery/ — drop a photo
 // into the matching folder and it shows up here automatically, no code
 // changes needed. import.meta.glob's path has to be a static string Vite
-// can analyze at build time, so each folder needs its own glob call; the
-// shared buildGalleryPhotos() helper does the rest (sorting + turning
-// filenames into alt text).
+// can analyze at build time, so each folder needs its own glob call.
 const dogsModules = import.meta.glob(
   "../assets/gallery/dogs/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}",
-  {
-    eager: true,
-  },
+  { eager: true },
 );
 const kenaxaxelModules = import.meta.glob(
   "../assets/gallery/kenaxaxel26/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}",
-  {
-    eager: true,
-  },
+  { eager: true },
 );
 const boardingModules = import.meta.glob(
   "../assets/gallery/boarding/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}",
-  {
-    eager: true,
-  },
+  { eager: true },
 );
 
-const dogsPhotos = buildGalleryPhotos(dogsModules);
-const kenaxaxelPhotos = buildGalleryPhotos(kenaxaxelModules);
-const boardingPhotos = buildGalleryPhotos(boardingModules);
+const GALLERIES = [
+  {
+    id: "family",
+    eyebrow: "Our Dogs",
+    title: <>Meet the <em>family.</em></>,
+    photos: buildGalleryPhotos(dogsModules, "Young Spirit Kennel dog"),
+  },
+  {
+    id: "litter",
+    eyebrow: "Kena × Axel · 2026",
+    title: <>The <em>litter.</em></>,
+    photos: buildGalleryPhotos(kenaxaxelModules, "Kena x Axel litter photo"),
+  },
+  {
+    id: "boarding",
+    eyebrow: "Boarding",
+    title: <>Guests having a <em>good time.</em></>,
+    photos: buildGalleryPhotos(boardingModules, "Boarding guest"),
+  },
+];
 
 export default function Photos() {
   return (
@@ -40,19 +50,36 @@ export default function Photos() {
         description="Browse photos of the Dobermans, Rottweilers, puppies, and boarding guests at Young Spirit Kennel in Bowling Green, Kentucky."
         path="/photos"
       />
-      <PageHero
-  eyebrow="Photos"
-  title="Our dogs, our puppies, our family"
-  intro="Every photo published here is watermarked to protect our dogs and our families from misuse."
-/>
 
-<section className="section">
-  <div className="wrap">
-    <PhotoGallerySection title="Meet the family" photos={dogsPhotos} minTiles={6} />
-    <PhotoGallerySection title="Kena x Axel Litter 2026" photos={kenaxaxelPhotos} minTiles={6} style={{ marginTop: 44 }} />
-    <PhotoGallerySection title="Boarding guests having a good time" photos={boardingPhotos} minTiles={6} style={{ marginTop: 44 }} />
-  </div>
-</section>
+      <PageHero
+        eyebrow="Photos"
+        title="Our dogs, our puppies, our family"
+        intro="Every photo published here is watermarked to protect our dogs and our families from misuse."
+      >
+        <nav className="jump-links" aria-label="Jump to gallery">
+          {GALLERIES.map((g) => (
+            <a key={g.id} href={`#${g.id}`}>{g.eyebrow}</a>
+          ))}
+        </nav>
+      </PageHero>
+
+      {GALLERIES.map((g, i) => (
+        <section
+          key={g.id}
+          id={g.id}
+          className={`section ${i % 2 === 1 ? "section--surface" : ""}`}
+        >
+          <div className="wrap">
+            <Reveal className="section-head">
+              <p className="eyebrow">
+                {g.eyebrow} · {g.photos.length} photos
+              </p>
+              <h2 className="title">{g.title}</h2>
+            </Reveal>
+            <PhotoGallery photos={g.photos} />
+          </div>
+        </section>
+      ))}
     </>
   );
 }
