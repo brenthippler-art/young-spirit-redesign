@@ -1,10 +1,26 @@
-import Eyebrow from "../components/Eyebrow";
 import { TESTIMONIALS } from "../data/testimonials";
 import TestimonialFeature from "../components/TestimonialFeature";
-import logo from "../assets/logo.png";
-import Seo from "../components/Seo";
 import PageHero from "../components/PageHero";
+import Reveal from "../components/Reveal";
+import Seo from "../components/Seo";
+import logo from "../assets/logo.png";
 import saintPhoto from "../assets/saint.jpeg";
+import "./About.css";
+
+const PILLARS = [
+  {
+    title: "Health",
+    text: "Health is a priority in every breeding decision. We carefully consider the health, genetics, structure, temperament, and pedigree of both parents when planning a litter.",
+  },
+  {
+    title: "Temperament",
+    text: "Temperament matters just as much. We strive for dogs that are confident, devoted, intelligent, trainable, and naturally protective, with a stable, dependable nature.",
+  },
+  {
+    title: "Purpose",
+    text: "Above all, we breed with purpose — every litter is planned to improve on the last, producing exceptional family companions who keep the intelligence and loyalty the breed is known for.",
+  },
+];
 
 export default function About() {
   return (
@@ -14,6 +30,7 @@ export default function About() {
         description="Get to know the family behind Young Spirit Kennel and how we raise AKC Dobermans and Rottweilers in Bowling Green, Kentucky."
         path="/about"
       />
+
       <PageHero
         eyebrow="About Our Kennel"
         title="Welcome to Young Spirit Kennel"
@@ -29,97 +46,108 @@ export default function About() {
         </nav>
       </PageHero>
 
-      <section className="border-b" id="story">
-        <div className="wrap two-col">
-          <div>
-            <Eyebrow>Two words, one name</Eyebrow>
-            <h2 style={{ fontSize: 30, maxWidth: 600 }}>Young Spirit</h2>
-
-            <p className="body-p">
+      {/* ---------- STORY ---------- */}
+      <section className="section" id="story">
+        <div className="wrap split about-story">
+          <Reveal className="prose">
+            <p className="eyebrow">Two words, one name</p>
+            <h2 className="title about-story__title">
+              Young <em>Spirit.</em>
+            </h2>
+            <p>
               "Young" comes from a family maiden name, and it also reflects the
               lively, youthful spark dogs carry throughout their lives — their
               curiosity, their eagerness, and the bright energy that makes them
               such joyful companions.
             </p>
-            <p className="body-p">
+            <p>
               "Spirit" speaks to the deeper side of a dog's nature. Their spirit
               is loyal, intuitive, and full of heart. Dogs form connections with
               people that are honest and meaningful, and those relationships
               guide the way we care for every dog here.
             </p>
-            <p className="body-p">
+            <p>
               Together, Young Spirit honors both parts: the lively, joyful
               nature of dogs, and the special bond they create with their
               people.
             </p>
-          </div>
-          <div className="imgcol">
+          </Reveal>
+
+          <Reveal className="about-crest framed" delay={150}>
             <img src={logo} alt="Young Spirit Kennel crest" />
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="border-b" id="philosophy">
+      {/* ---------- PHILOSOPHY ---------- */}
+      <section className="section section--surface" id="philosophy">
         <div className="wrap">
-          <Eyebrow>Our Breeding Philosophy</Eyebrow>
-          <h2 style={{ fontSize: 30, maxWidth: 600 }}>
-            More than beautiful — confident, capable, and stable
-          </h2>
-          <div className="two-col" style={{ marginTop: 36 }}>
-            <div>
-              <p className="body-p" style={{ marginTop: 0 }}>
-                At Young Spirit Kennel, our goal is to produce healthy,
-                well-rounded companions that represent their breeds in both
-                appearance and temperament. A great Doberman or Rottweiler
-                should be more than beautiful — confident, intelligent, loyal,
-                stable, and capable.
-              </p>
-              <p className="body-p">
-                Health is a priority in every breeding decision. We carefully
-                consider the health, genetics, structure, temperament, and
-                pedigree of both parents when planning a litter.
-              </p>
-            </div>
-            <div>
-              <p className="body-p" style={{ marginTop: 0 }}>
-                Temperament matters just as much. We strive for dogs that are
-                confident, devoted, intelligent, trainable, and naturally
-                protective, with a stable, dependable nature.
-              </p>
-              <p className="body-p">
-                Above all, we breed with purpose — every litter is planned to
-                improve on the last, producing exceptional family companions who
-                keep the intelligence and loyalty the breed is known for.
-              </p>
-            </div>
+          <Reveal className="section-head">
+            <p className="eyebrow">Our Breeding Philosophy</p>
+            <h2 className="title">
+              More than beautiful — <em>confident, capable, and stable.</em>
+            </h2>
+            <p className="lede about-philosophy__lede">
+              At Young Spirit Kennel, our goal is to produce healthy,
+              well-rounded companions that represent their breeds in both
+              appearance and temperament. A great Doberman or Rottweiler should
+              be more than beautiful — confident, intelligent, loyal, stable, and
+              capable.
+            </p>
+          </Reveal>
+
+          <div className="services">
+            {PILLARS.map((pillar, i) => (
+              <Reveal key={pillar.title} className="service" delay={i * 120}>
+                <span className="service__num">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.text}</p>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b" id="visit">
+      {/* ---------- VISIT ---------- */}
+      <section className="section" id="visit">
         <div className="wrap">
-          <Eyebrow>Visit or Call</Eyebrow>
-          <h2 style={{ fontSize: 28 }}>Bowling Green, Kentucky</h2>
-          <div className="cards3">
-            <div className="navcard">
-              <div className="k">Location</div>
-              <h3 style={{ fontSize: 17 }}>Bowling Green, KY</h3>
-              <p>Exact address shared upon inquiry.</p>
-            </div>
-            <div className="navcard">
-              <div className="k">Hours</div>
-              <h3 style={{ fontSize: 17 }}>9 AM – 9 PM</h3>
-              <p>For calls, texts, and scheduled visits.</p>
-            </div>
-            <div className="navcard">
-              <div className="k">Reach Us</div>
-              <h3 style={{ fontSize: 17 }}>Call or Text</h3>
-              <p>(270) 605-4128 · (270) 605-4133</p>
-            </div>
-          </div>
+          <Reveal className="section-head">
+            <p className="eyebrow">Visit or Call</p>
+            <h2 className="title">
+              Bowling Green, <em>Kentucky.</em>
+            </h2>
+          </Reveal>
+
+          <Reveal>
+            <dl className="info-strip">
+              <div>
+                <dt className="label">Location</dt>
+                <dd>
+                  Bowling Green, KY
+                  <small>Exact address shared upon inquiry.</small>
+                </dd>
+              </div>
+              <div>
+                <dt className="label">Hours</dt>
+                <dd>
+                  9 AM – 9 PM
+                  <small>For calls, texts, and scheduled visits.</small>
+                </dd>
+              </div>
+              <div>
+                <dt className="label">Call or Text</dt>
+                <dd>
+                  <a href="tel:2706054128">(270) 605-4128</a>
+                  <br />
+                  <a href="tel:2706054133">(270) 605-4133</a>
+                </dd>
+              </div>
+            </dl>
+          </Reveal>
         </div>
       </section>
 
+      {/* ---------- REVIEWS ---------- */}
       <section className="section section--surface" id="reviews">
         <TestimonialFeature
           testimonials={TESTIMONIALS}

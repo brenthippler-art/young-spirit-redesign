@@ -1,0 +1,21 @@
+.faq-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(3rem, 7vw, 7rem);
+  align-items: start;
+}
+.faq-list { border-top: 1px solid var(--hairline); }
+
+/* The side panel follows you down the page while you read */
+.faq-aside { position: sticky; top: 7rem; }
+.faq-aside .title { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+.faq-aside p:not(.eyebrow) { color: var(--text-muted); margin: 1.5rem 0 2rem; }
+.faq-aside__actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+.faq-contact { display: grid; gap: 1rem; margin: 1.5rem 0 0; }
+.faq-contact dd { margin: 0.3rem 0 0; color: var(--text); }
+
+@media (max-width: 900px) {
+  .faq-layout { grid-template-columns: 1fr; }
+  .faq-aside { position: static; }
+}

@@ -1,0 +1,14 @@
+.about-story { align-items: center; }
+.about-story__title { margin-bottom: 2rem; }
+
+.about-crest {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(92, 15, 23, 0.4), transparent 65%),
+    var(--charcoal);
+}
+.about-crest img { width: min(62%, 300px); height: auto; }
+
+.about-philosophy__lede { margin-top: 1.75rem; }

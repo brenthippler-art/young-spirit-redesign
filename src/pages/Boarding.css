@@ -1,0 +1,48 @@
+/* ---------- Rate card ---------- */
+.rate {
+  margin-top: 2.5rem;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  border: 1px solid var(--hairline);
+  background: linear-gradient(160deg, rgba(92, 15, 23, 0.28), transparent 60%);
+}
+.rate__price {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(3.5rem, 7vw, 5rem);
+  line-height: 1;
+  color: var(--cream);
+}
+.rate__unit {
+  margin-left: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.rate__includes {
+  margin: 1.75rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--hairline);
+}
+.rate__includes dd { margin: 0.5rem 0 0; }
+.rate-note { margin: 1.25rem 0 0; font-size: 0.85rem; color: var(--text-muted); }
+
+/* ---------- Drop-off checklist ---------- */
+.checklist { margin: 2.5rem 0 0; border-top: 1px solid var(--hairline); }
+.checklist > div {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.checklist dt { padding-top: 0.2rem; }
+.checklist dd { margin: 0; color: var(--text-muted); }
+
+.boarding-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
+
+@media (max-width: 560px) {
+  .checklist > div { grid-template-columns: 1fr; gap: 0.35rem; }
+}

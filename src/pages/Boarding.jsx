@@ -1,10 +1,24 @@
-import Eyebrow from "../components/Eyebrow";
-import DogTag from "../components/DogTag";
 import { getTestimonials } from "../data/testimonials";
 import TestimonialFeature from "../components/TestimonialFeature";
-import Seo from "../components/Seo";
+import PhotoGallery from "../components/PhotoGallery";
 import PageHero from "../components/PageHero";
+import Reveal from "../components/Reveal";
+import Seo from "../components/Seo";
+import { buildGalleryPhotos } from "../utils/photoGallery";
 import boardingPhoto from "../assets/gallery/boarding/watermarked-img-1788126981696-1-IMG_0233.jpeg";
+import "./Boarding.css";
+
+const boardingModules = import.meta.glob(
+  "../assets/gallery/boarding/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}",
+  { eager: true },
+);
+const boardingPhotos = buildGalleryPhotos(boardingModules, "Boarding guest");
+
+const DROP_OFF = [
+  { label: "Vaccinations", text: "Boarded dogs must be up to date on vaccines." },
+  { label: "Drop-off & pick-up", text: "Scheduled directly with us." },
+  { label: "Cancellations", text: "Policy confirmed at the time of booking." },
+];
 
 export default function Boarding() {
   return (
@@ -14,6 +28,7 @@ export default function Boarding() {
         description="Safe, attentive dog boarding in Bowling Green, Kentucky from Young Spirit Kennel. Call (270) 605-4128 to reserve a stay for your dog."
         path="/boarding"
       />
+
       <PageHero
         eyebrow="Boarding"
         title="Care while you're away"
@@ -26,80 +41,70 @@ export default function Boarding() {
         </a>
       </PageHero>
 
-      <section className="border-b">
-        <div className="wrap two-col">
-          <div>
-            <Eyebrow>Rates</Eyebrow>
-            <h2 style={{ fontSize: 28 }}>Basic Boarding</h2>
-            <DogTag noRivet name={null} meta={null} description={null}>
-              <div className="tag-name" style={{ fontSize: 32, marginTop: 2 }}>
-                $35
-                <span
-                  style={{
-                    fontSize: 15,
-                    fontFamily: "'Work Sans'",
-                    color: "var(--brass)",
-                    fontWeight: 600,
-                    textTransform: "none",
-                  }}
-                >
-                  {" "}
-                  / night
-                </span>
-              </div>
-              <div className="tag-meta" style={{ marginTop: 10 }}>
-                Includes
-              </div>
-              <div className="tag-desc">
-                Feeding, daily exercise, and one-on-one attention.
-              </div>
-            </DogTag>
-            <p className="body-p" style={{ fontSize: 13.5, opacity: 0.65 }}>
+      {/* ---------- RATES + DROP-OFF ---------- */}
+      <section className="section">
+        <div className="wrap split">
+          <Reveal>
+            <p className="eyebrow">Rates</p>
+            <h2 className="title">
+              Basic <em>boarding.</em>
+            </h2>
+
+            <div className="rate">
+              <p className="rate__price">
+                $35<span className="rate__unit">/ night</span>
+              </p>
+              <dl className="rate__includes">
+                <dt className="label">Includes</dt>
+                <dd>Feeding, daily exercise, and one-on-one attention.</dd>
+              </dl>
+            </div>
+
+            <p className="rate-note">
               Medication administration is available for an added fee — just let
               us know when you book.
             </p>
-          </div>
-          <div>
-            <Eyebrow>Before You Drop Off</Eyebrow>
-            <h2 style={{ fontSize: 28 }}>What to know</h2>
-            <ul
-              style={{
-                paddingLeft: 0,
-                listStyle: "none",
-                marginTop: 20,
-                display: "flex",
-                flexDirection: "column",
-                gap: 14,
-                fontSize: 14.5,
-              }}
-            >
-              <li>
-                <b style={{ color: "var(--brass-bright)" }}>Vaccinations:</b>{" "}
-                boarded dogs must be up to date on vaccines.
-              </li>
-              <li>
-                <b style={{ color: "var(--brass-bright)" }}>
-                  Drop-off &amp; pick-up:
-                </b>{" "}
-                scheduled directly with us.
-              </li>
-              <li>
-                <b style={{ color: "var(--brass-bright)" }}>Cancellations:</b>{" "}
-                policy confirmed at the time of booking.
-              </li>
-            </ul>
-            <a
-              href="tel:2706054128"
-              className="btn btn-primary"
-              style={{ marginTop: 26 }}
-            >
-              Text or Call to Book Boarding
-            </a>
-          </div>
+          </Reveal>
+
+          <Reveal delay={150}>
+            <p className="eyebrow">Before You Drop Off</p>
+            <h2 className="title">
+              What to <em>know.</em>
+            </h2>
+
+            <dl className="checklist">
+              {DROP_OFF.map((item) => (
+                <div key={item.label}>
+                  <dt className="label">{item.label}</dt>
+                  <dd>{item.text}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="boarding-actions">
+              <a href="tel:2706054128" className="btn btn--solid">
+                Text or Call to Book
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="section section--surface" id="reviews">
+      {/* ---------- RECENT GUESTS ---------- */}
+      <section className="section section--surface">
+        <div className="wrap">
+          <Reveal className="section-head">
+            <p className="eyebrow">Recent Guests</p>
+            <h2 className="title">
+              A few happy <em>boarders.</em>
+            </h2>
+          </Reveal>
+          <PhotoGallery photos={boardingPhotos} initialCount={6} />
+        </div>
+      </section>
+
+      {/* ---------- REVIEWS ---------- */}
+      <section className="section" id="reviews">
         <TestimonialFeature
           testimonials={getTestimonials("boarding")}
           eyebrow="What Boarding Families Say"

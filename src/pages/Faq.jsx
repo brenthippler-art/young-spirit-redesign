@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import FaqItem from "../components/FaqItem";
-import Seo from "../components/Seo";
 import PageHero from "../components/PageHero";
+import Reveal from "../components/Reveal";
+import Seo from "../components/Seo";
+import "./Faq.css";
 
 export default function Faq() {
   return (
@@ -11,6 +13,7 @@ export default function Faq() {
         description="Answers to common questions about buying a Doberman or Rottweiler puppy and boarding your dog at Young Spirit Kennel in Bowling Green, Kentucky."
         path="/faq"
       />
+
       <PageHero
         eyebrow="FAQ"
         title="Common questions"
@@ -18,11 +21,8 @@ export default function Faq() {
       />
 
       <section className="section">
-        <div className="wrap">
-          <div
-            className="kicker-block"
-            style={{ marginTop: 20, maxWidth: "100%" }}
-          >
+        <div className="wrap faq-layout">
+          <Reveal className="faq-list">
             <FaqItem question="What's included with a puppy?" defaultOpen>
               Up-to-date shots and worming, a vet check, microchip, and AKC
               registration papers. Tails are docked, dew claws removed, and ears
@@ -34,7 +34,7 @@ export default function Faq() {
             <FaqItem question="What is your breeding philosophy?">
               At Young Spirit Kennel, our goal is to produce healthy,
               well-rounded companions that represent their breeds in both
-              appearance and temperament. We’re dedicated to raising quality
+              appearance and temperament. We're dedicated to raising quality
               dogs with the health, temperament, and companionship families are
               looking for.
             </FaqItem>
@@ -53,13 +53,7 @@ export default function Faq() {
 
             <FaqItem question="Do you offer a health guarantee?">
               Yes — full terms are laid out in your{" "}
-              <Link
-                to="/litters#agreement"
-                style={{
-                  color: "var(--brass-bright)",
-                  textDecoration: "underline",
-                }}
-              >
+              <Link to="/litters#agreement" className="inline-link">
                 puppy contract
               </Link>
               .
@@ -72,13 +66,7 @@ export default function Faq() {
 
             <FaqItem question="Do you offer boarding?">
               Yes — see our{" "}
-              <Link
-                to="/boarding"
-                style={{
-                  color: "var(--brass-bright)",
-                  textDecoration: "underline",
-                }}
-              >
+              <Link to="/boarding" className="inline-link">
                 Boarding page
               </Link>{" "}
               for current rates, what's included, and what to know before
@@ -96,75 +84,81 @@ export default function Faq() {
             <FaqItem question="How do I get in touch with you?">
               The easiest way to communicate with us is through a text or a
               phone call. We also have a form on our{" "}
-              <Link
-                to="/contact"
-                style={{
-                  color: "var(--brass-bright)",
-                  textDecoration: "underline",
-                }}
-              >
-                Contact Page
+              <Link to="/contact" className="inline-link">
+                Contact page
               </Link>{" "}
               that you can use to send us a message, or you can find us on
-              Facebook or Instagram.
-              <ul
-                style={{
-                  paddingLeft: 0,
-                  listStyle: "none",
-                  marginTop: 24,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 16,
-                  fontSize: 15,
-                }}
-              >
-                <li>
-                  <b className="contact-label">Phone / Text</b>
-                  <a href="tel:2706054128">(270) 605-4128</a> &nbsp;·&nbsp;{" "}
-                  <a href="tel:2706054133">(270) 605-4133</a>
-                </li>
-                <li>
-                  <b className="contact-label">Location</b>Bowling Green,
-                  Kentucky — exact address shared upon inquiry
-                </li>
-                <li>
-                  <b className="contact-label">Hours</b>9 AM – 9 PM, daily
-                </li>
-                <li>
-                  <b className="contact-label">Social</b>
-                  <a href="https://www.facebook.com/Young.Spirit.Kennel">
-                    Facebook — Young Spirit Kennel
-                  </a>
-                  <br />
-                  <a href="https://www.tiktok.com/@meg_faulkner">
-                    TikTok — Young Spirit Kennel
-                  </a>
-                </li>
-              </ul>
-              <a
-                href="tel:2706054128"
-                className="btn btn-primary"
-                style={{ marginTop: 28 }}
-              >
-                Call or Text Now
-              </a>
+              Facebook or TikTok.
+              <dl className="faq-contact">
+                <div>
+                  <dt className="label">Phone / Text</dt>
+                  <dd>
+                    <a href="tel:2706054128" className="inline-link">(270) 605-4128</a>
+                    {" · "}
+                    <a href="tel:2706054133" className="inline-link">(270) 605-4133</a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="label">Location</dt>
+                  <dd>Bowling Green, Kentucky — exact address shared upon inquiry</dd>
+                </div>
+                <div>
+                  <dt className="label">Hours</dt>
+                  <dd>9 AM – 9 PM, daily</dd>
+                </div>
+                <div>
+                  <dt className="label">Social</dt>
+                  <dd>
+                    <a
+                      href="https://www.facebook.com/Young.Spirit.Kennel"
+                      className="inline-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Facebook
+                    </a>
+                    {" · "}
+                    <a
+                      href="https://www.tiktok.com/@meg_faulkner"
+                      className="inline-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      TikTok
+                    </a>
+                  </dd>
+                </div>
+              </dl>
             </FaqItem>
 
             <FaqItem question="Can I leave a review?">
               Absolutely — we'd love to hear how your pup or boarding stay went.
               You may leave a review{" "}
-              <Link
-                to="/leavereview"
-                style={{
-                  color: "var(--brass-bright)",
-                  textDecoration: "underline",
-                }}
-              >
+              <Link to="/leavereview" className="inline-link">
                 on our website
               </Link>
               , or reach out on Facebook or by phone.
             </FaqItem>
-          </div>
+          </Reveal>
+
+          <Reveal as="aside" className="faq-aside" delay={150}>
+            <p className="eyebrow">Still Have Questions?</p>
+            <h2 className="title">
+              We're easiest to reach <em>by phone.</em>
+            </h2>
+            <p>
+              Call or text any day from 9 AM to 9 PM — we're happy to talk
+              through litters, deposits, or boarding.
+            </p>
+            <div className="faq-aside__actions">
+              <a href="tel:2706054128" className="btn btn--solid">
+                Call or Text
+              </a>
+              <Link to="/contact" className="btn btn--ghost">
+                Send a Message
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>
