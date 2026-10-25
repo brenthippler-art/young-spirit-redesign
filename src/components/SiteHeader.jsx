@@ -8,6 +8,7 @@ const NAV = [
   { to: "/boarding", label: "Boarding" },
   { to: "/about", label: "About" },
   { to: "/photos", label: "Photos" },
+  { to: "/faq", label: "FAQ" },
 ];
 
 export default function SiteHeader() {
