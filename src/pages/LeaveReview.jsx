@@ -18,11 +18,12 @@ export default function LeaveReview() {
   const [form, setForm] = useState(EMPTY_FORM);
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
-     const handleRatingChange = (rating) => {
-     setForm((prev) => ({ ...prev, rating }));
-   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
-  const handleRatingClick = (rating) => {
+  const handleRatingChange = (rating) => {
     setForm((prev) => ({ ...prev, rating }));
   };
 
@@ -66,7 +67,7 @@ export default function LeaveReview() {
     }
   };
 
-    return (
+  return (
     <>
       <Seo
         title="Leave a Review"
@@ -85,7 +86,9 @@ export default function LeaveReview() {
           <Reveal className="form-card">
             <form className="form" onSubmit={handleSubmit}>
               <div className="field">
-                <label htmlFor="review-name" className="label">Name</label>
+                <label htmlFor="review-name" className="label">
+                  Name
+                </label>
                 <input
                   id="review-name"
                   className="input"
@@ -120,7 +123,9 @@ export default function LeaveReview() {
               </fieldset>
 
               <div className="field">
-                <label htmlFor="review-text" className="label">Your Review</label>
+                <label htmlFor="review-text" className="label">
+                  Your Review
+                </label>
                 <textarea
                   id="review-text"
                   className="input"
@@ -149,7 +154,8 @@ export default function LeaveReview() {
                 )}
                 {status === "error" && (
                   <p className="form-status form-status--error">
-                    Something went wrong sending that — please call or text us at{" "}
+                    Something went wrong sending that — please call or text us
+                    at{" "}
                     <a href="tel:2706054128" className="inline-link">
                       (270) 605-4128
                     </a>{" "}

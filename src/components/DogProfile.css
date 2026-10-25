@@ -9,23 +9,15 @@
 
 /* Framed portrait (same frame as the page hero) */
 .dog-profile__media {
-  position: relative;
   aspect-ratio: 4 / 5;
-  overflow: hidden;
 }
+
 .dog-profile__media img {
   width: 100%; height: 100%;
   object-fit: cover;
   transition: transform 1.2s var(--ease);
 }
 .dog-profile:hover .dog-profile__media img { transform: scale(1.03); }
-.dog-profile__media::after {
-  content: '';
-  position: absolute;
-  inset: 0.9rem;
-  border: 1px solid rgba(176, 141, 87, 0.45);
-  pointer-events: none;
-}
 
 .dog-profile__name { font-size: clamp(2.5rem, 5vw, 4rem); }
 .dog-profile__prefix {

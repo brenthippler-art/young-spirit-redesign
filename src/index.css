@@ -5,7 +5,7 @@
   --charcoal: #1B1717;
   --oxblood: #5C0F17;
   --garnet: #A32433;
-  --brass: #B08D57;        /* swap in your existing brass hex if it differs */
+  --brass: #A9895C;       
   --bone: #E6E1D8;
   --cream: #F0EAE3;
 
@@ -247,3 +247,23 @@ textarea.input { min-height: 8.5rem; resize: vertical; }
 }
 .form-status--success { border-color: var(--brass); background: rgba(176, 141, 87, 0.08); color: var(--cream); }
 .form-status--error { border-color: var(--garnet); background: rgba(163, 36, 51, 0.12); color: var(--cream); }
+
+/* ========== SHARED: button row, skip link ========== */
+.btn-row { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.9rem 1.4rem;
+  background: var(--cream);
+  color: var(--onyx);
+  font: 500 0.8rem var(--font-body);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transform: translateY(-200%);
+  transition: transform 0.3s var(--ease);
+}
+.skip-link:focus { transform: none; }
+main:focus { outline: none; }

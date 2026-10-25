@@ -18,7 +18,7 @@ export default function DogProfile({ dog, reverse = false, onPedigreeClick }) {
 
   return (
     <Reveal as="article" className={`dog-profile ${reverse ? 'dog-profile--reverse' : ''}`}>
-      <div className="dog-profile__media">
+      <div className="dog-profile__media framed">
         <img src={photo} alt={name} style={{ objectPosition: photoPosition }} loading="lazy" />
       </div>
 

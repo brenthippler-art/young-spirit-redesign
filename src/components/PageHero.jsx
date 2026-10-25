@@ -21,7 +21,7 @@ export default function PageHero({
         </Reveal>
 
         {image && (
-          <Reveal className="page-hero__media" delay={150}>
+          <Reveal className="page-hero__media framed" delay={150}>
             <img src={image} alt={imageAlt} style={{ objectPosition: imagePosition }} />
           </Reveal>
         )}
