@@ -1,0 +1,32 @@
+.contact-layout { align-items: start; }
+
+.contact-phone {
+  display: inline-block;
+  margin: 2.25rem 0 0;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  line-height: 1;
+  color: var(--cream);
+  border-bottom: 1px solid var(--garnet);
+  padding-bottom: 0.4rem;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.contact-phone:hover { color: var(--brass); border-color: var(--brass); }
+
+.contact-details { margin: 2.75rem 0 0; border-top: 1px solid var(--hairline); }
+.contact-details > div {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.contact-details dt { padding-top: 0.25rem; }
+.contact-details dd { margin: 0; color: var(--text-muted); }
+
+.contact-form__title { font-size: clamp(1.6rem, 2.6vw, 2.1rem); margin-bottom: 2rem; }
+
+@media (max-width: 560px) {
+  .contact-details > div { grid-template-columns: 1fr; gap: 0.35rem; }
+}

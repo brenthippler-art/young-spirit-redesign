@@ -1,0 +1,45 @@
+.star-rating { display: flex; align-items: center; gap: 0.35rem; margin-left: -0.6rem; }
+
+/* Hide the real radio button but keep it focusable and readable */
+.star__input,
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.star__label {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: rgba(230, 225, 216, 0.22);
+  cursor: pointer;
+  transition: color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.star.is-filled .star__label { color: var(--brass); }
+
+/* Hover preview: light the hovered star and every star before it */
+.star-rating:has(.star:hover) .star__label { color: rgba(230, 225, 216, 0.22); }
+.star-rating .star:hover .star__label,
+.star-rating .star:has(~ .star:hover) .star__label { color: var(--brass); }
+.star:hover .star__label { transform: scale(1.12); }
+
+/* Keyboard focus ring on the visible star */
+.star__input:focus-visible + .star__label {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+.star-rating__value {
+  margin-left: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+}

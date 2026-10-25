@@ -1,8 +1,9 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import Eyebrow from "../components/Eyebrow";
-import Seo from "../components/Seo";
-import PageHero from "../components/PageHero";
+   import PageHero from "../components/PageHero";
+   import Reveal from "../components/Reveal";
+   import Seo from "../components/Seo";
+   import "./Contact.css";
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -52,158 +53,151 @@ export default function Contact() {
     }
   };
 
-  return (
+   return (
     <>
       <Seo
         title="Contact Us | Bowling Green, KY"
         description="Reach Young Spirit Kennel in Bowling Green, KY about puppies, litters, or boarding. Call (270) 605-4128 or send us a message online."
         path="/contact"
       />
+
       <PageHero
         eyebrow="Contact Us"
         title="Reach out — call, text, or message"
         intro="Whether you're asking about an upcoming litter, boarding a dog, or just want to say hello, we're easiest to reach by phone."
       />
 
-      <section className="border-b">
-        <div className="wrap two-col">
-          <div>
-            <Eyebrow>Get in Touch</Eyebrow>
-            <h2 style={{ fontSize: 28 }}>Young Spirit Kennel</h2>
-            <ul
-              style={{
-                paddingLeft: 0,
-                listStyle: "none",
-                marginTop: 24,
-                display: "flex",
-                flexDirection: "column",
-                gap: 16,
-                fontSize: 15,
-              }}
-            >
-              <li>
-                <b className="contact-label">Phone / Text</b>
-                <a href="tel:2706054128">(270) 605-4128</a> &nbsp;·&nbsp;{" "}
-                <a href="tel:2706054133">(270) 605-4133</a>
-              </li>
-              <li>
-                <b className="contact-label">Location</b>Bowling Green, Kentucky
-                — exact address shared upon inquiry
-              </li>
-              <li>
-                <b className="contact-label">Hours</b>9 AM – 9 PM, daily
-              </li>
-              <li>
-                <b className="contact-label">Social</b>
-                <a href="https://www.facebook.com/Young.Spirit.Kennel">
-                  Facebook — Young Spirit Kennel
-                </a>
-                <br></br>
-                <a href="https://www.tiktok.com/@meg_faulkner">
-                  TikTok — Young Spirit Kennel
-                </a>
-                <br />
-              </li>
-            </ul>
-            <a
-              href="tel:2706054128"
-              className="btn btn-primary"
-              style={{ marginTop: 28 }}
-            >
-              Call or Text Now
-            </a>
-          </div>
-
-          <div>
-            <Eyebrow>Send a Message</Eyebrow>
-            <h2 style={{ fontSize: 22, marginBottom: 20 }}>
-              Prefer to write it out?
+      <section className="section">
+        <div className="wrap split contact-layout">
+          {/* ---------- DETAILS ---------- */}
+          <Reveal>
+            <p className="eyebrow">Get in Touch</p>
+            <h2 className="title">
+              Call or text <em>any day.</em>
             </h2>
-            <div
-              className="dogtag no-rivet"
-              style={{ borderRadius: 8, padding: 26 }}
-            >
-              <form
-                onSubmit={handleSubmit}
-                style={{ display: "flex", flexDirection: "column", gap: 14 }}
-              >
-                <div className="form-field">
-                  <label htmlFor="contact-name">Name</label>
-                  <input
-                    id="contact-name"
-                    name="name"
-                    type="text"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Jane Doe"
-                    required
-                  />
-                </div>
-                <div className="form-field">
-                  <label htmlFor="contact-info">Phone or Email</label>
-                  <input
-                    id="contact-info"
-                    name="contact"
-                    type="text"
-                    value={form.contact}
-                    onChange={handleChange}
-                    placeholder="(555) 555-5555"
-                    required
-                  />
-                </div>
-                <div className="form-field">
-                  <label htmlFor="contact-message">Message</label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="I'm interested in..."
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn btn-secondary"
-                  style={{ marginTop: 4 }}
-                  disabled={status === "sending"}
-                >
-                  {status === "sending" ? "Sending…" : "Send Message"}
-                </button>
 
+            <a href="tel:2706054128" className="contact-phone">
+              (270) 605-4128
+            </a>
+
+            <dl className="contact-details">
+              <div>
+                <dt className="label">Second Line</dt>
+                <dd>
+                  <a href="tel:2706054133" className="inline-link">
+                    (270) 605-4133
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="label">Hours</dt>
+                <dd>9 AM – 9 PM, daily</dd>
+              </div>
+              <div>
+                <dt className="label">Location</dt>
+                <dd>Bowling Green, Kentucky — exact address shared upon inquiry</dd>
+              </div>
+              <div>
+                <dt className="label">Social</dt>
+                <dd>
+                  <a
+                    href="https://www.facebook.com/Young.Spirit.Kennel"
+                    className="inline-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Facebook
+                  </a>
+                  {" · "}
+                  <a
+                    href="https://www.tiktok.com/@meg_faulkner"
+                    className="inline-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    TikTok
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </Reveal>
+
+          {/* ---------- FORM ---------- */}
+          <Reveal className="form-card" delay={150}>
+            <p className="eyebrow">Send a Message</p>
+            <h2 className="contact-form__title">Prefer to write it out?</h2>
+
+            <form className="form" onSubmit={handleSubmit}>
+              <div className="field">
+                <label htmlFor="contact-name" className="label">Name</label>
+                <input
+                  id="contact-name"
+                  className="input"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Jane Doe"
+                  required
+                />
+              </div>
+
+              <div className="field">
+                <label htmlFor="contact-info" className="label">Phone or Email</label>
+                <input
+                  id="contact-info"
+                  className="input"
+                  name="contact"
+                  type="text"
+                  value={form.contact}
+                  onChange={handleChange}
+                  placeholder="(555) 555-5555"
+                  required
+                />
+              </div>
+
+              <div className="field">
+                <label htmlFor="contact-message" className="label">Message</label>
+                <textarea
+                  id="contact-message"
+                  className="input"
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="I'm interested in..."
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn btn--solid form__submit"
+                disabled={status === "sending"}
+              >
+                {status === "sending" ? "Sending…" : "Send Message"}
+              </button>
+
+              <div aria-live="polite">
                 {status === "success" && (
-                  <p className="form-status success">
+                  <p className="form-status form-status--success">
                     Message sent — we'll get back to you soon.
                   </p>
                 )}
                 {status === "error" && (
-                  <p className="form-status error">
-                    Something went wrong sending that — please call or text us
-                    at{" "}
-                    <a
-                      href="tel:2706054128"
-                      style={{ textDecoration: "underline" }}
-                    >
+                  <p className="form-status form-status--error">
+                    Something went wrong sending that — please call or text us at{" "}
+                    <a href="tel:2706054128" className="inline-link">
                       (270) 605-4128
                     </a>{" "}
                     instead.
                   </p>
                 )}
-              </form>
-            </div>
-          </div>
+              </div>
+            </form>
+          </Reveal>
         </div>
       </section>
     </>
   );
 }
-
-const labelStyle = {
-  color: "var(--brass-bright)",
-  display: "block",
-  fontFamily: "'Fraunces', serif",
-  fontSize: 13,
-  textTransform: "uppercase",
-  letterSpacing: "0.08em",
-  marginBottom: 3,
-};

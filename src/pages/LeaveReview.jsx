@@ -2,7 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import PageHero from "../components/PageHero";
+import Reveal from "../components/Reveal";
 import Seo from "../components/Seo";
+import StarRating from "../components/StarRating";
+import "./LeaveReview.css";
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_REVIEW_TEMPLATE_ID = import.meta.env
@@ -15,10 +18,9 @@ export default function LeaveReview() {
   const [form, setForm] = useState(EMPTY_FORM);
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
+     const handleRatingChange = (rating) => {
+     setForm((prev) => ({ ...prev, rating }));
+   };
 
   const handleRatingClick = (rating) => {
     setForm((prev) => ({ ...prev, rating }));
@@ -64,13 +66,14 @@ export default function LeaveReview() {
     }
   };
 
-  return (
+    return (
     <>
       <Seo
         title="Leave a Review"
         description="Share your experience with a Young Spirit Kennel puppy or boarding stay."
         path="/leavereview"
       />
+
       <PageHero
         eyebrow="Leave a Review"
         title="Tell us how it went"
@@ -78,21 +81,17 @@ export default function LeaveReview() {
       />
 
       <section className="section">
-        <div className="wrap" style={{ maxWidth: 640 }}>
-          <div
-            className="dogtag no-rivet"
-            style={{ borderRadius: 8, padding: 26, marginTop: 32 }}
-          >
-            <form
-              onSubmit={handleSubmit}
-              style={{ display: "flex", flexDirection: "column", gap: 14 }}
-            >
-              <div className="form-field">
-                <label htmlFor="review-name">Name</label>
+        <div className="wrap review-wrap">
+          <Reveal className="form-card">
+            <form className="form" onSubmit={handleSubmit}>
+              <div className="field">
+                <label htmlFor="review-name" className="label">Name</label>
                 <input
                   id="review-name"
+                  className="input"
                   name="name"
                   type="text"
+                  autoComplete="name"
                   value={form.name}
                   onChange={handleChange}
                   placeholder="Jane Doe"
@@ -100,12 +99,13 @@ export default function LeaveReview() {
                 />
               </div>
 
-              <div className="form-field">
-                <label htmlFor="review-contact">
-                  Phone or Email (optional)
+              <div className="field">
+                <label htmlFor="review-contact" className="label">
+                  Phone or Email <span className="field__hint">(optional)</span>
                 </label>
                 <input
                   id="review-contact"
+                  className="input"
                   name="contact"
                   type="text"
                   value={form.contact}
@@ -114,33 +114,16 @@ export default function LeaveReview() {
                 />
               </div>
 
-              <div className="form-field">
-                <label>Rating</label>
-                <div
-                  className="star-picker"
-                  role="radiogroup"
-                  aria-label="Rating"
-                >
-                  {[1, 2, 3, 4, 5].map((n) => (
-                    <button
-                      key={n}
-                      type="button"
-                      className={`star-picker-btn${n <= form.rating ? " filled" : ""}`}
-                      role="radio"
-                      aria-checked={n === form.rating}
-                      aria-label={`${n} star${n > 1 ? "s" : ""}`}
-                      onClick={() => handleRatingClick(n)}
-                    >
-                      ★
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <fieldset className="field">
+                <legend className="label">Rating</legend>
+                <StarRating value={form.rating} onChange={handleRatingChange} />
+              </fieldset>
 
-              <div className="form-field">
-                <label htmlFor="review-text">Your Review</label>
+              <div className="field">
+                <label htmlFor="review-text" className="label">Your Review</label>
                 <textarea
                   id="review-text"
+                  className="input"
                   name="review"
                   value={form.review}
                   onChange={handleChange}
@@ -151,42 +134,34 @@ export default function LeaveReview() {
 
               <button
                 type="submit"
-                className="btn btn-primary"
-                style={{ marginTop: 4 }}
+                className="btn btn--solid form__submit"
                 disabled={status === "sending"}
               >
                 {status === "sending" ? "Sending…" : "Submit Review"}
               </button>
 
-              {status === "success" && (
-                <p className="form-status success">
-                  Thank you! Your review has been sent to Lee and Megan for
-                  approval.
-                </p>
-              )}
-              {status === "error" && (
-                <p className="form-status error">
-                  Something went wrong sending that — please call or text us at{" "}
-                  <a
-                    href="tel:2706054128"
-                    style={{ textDecoration: "underline" }}
-                  >
-                    (270) 605-4128
-                  </a>{" "}
-                  instead.
-                </p>
-              )}
+              <div aria-live="polite">
+                {status === "success" && (
+                  <p className="form-status form-status--success">
+                    Thank you! Your review has been sent to Lee and Megan for
+                    approval.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="form-status form-status--error">
+                    Something went wrong sending that — please call or text us at{" "}
+                    <a href="tel:2706054128" className="inline-link">
+                      (270) 605-4128
+                    </a>{" "}
+                    instead.
+                  </p>
+                )}
+              </div>
             </form>
-          </div>
+          </Reveal>
 
-          <p style={{ fontSize: 13, opacity: 0.6, marginTop: 24 }}>
-            <Link
-              to="/contact"
-              style={{
-                color: "var(--brass-bright)",
-                textDecoration: "underline",
-              }}
-            >
+          <p className="review-alt">
+            <Link to="/contact" className="inline-link">
               Prefer to just reach out directly?
             </Link>
           </p>
