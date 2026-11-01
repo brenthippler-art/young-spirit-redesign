@@ -5,7 +5,6 @@ import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import Seo from "../components/Seo";
 import { buildGalleryPhotos } from "../utils/photoGallery";
-import boardingPhoto from "../assets/gallery/boarding/watermarked-img-1788126981696-1-IMG_0233.jpeg";
 import "./Boarding.css";
 
 const boardingModules = import.meta.glob(

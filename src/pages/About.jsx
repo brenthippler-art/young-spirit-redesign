@@ -36,6 +36,7 @@ export default function About() {
         intro="Young Spirit Kennel represents our deep appreciation for family connections and the remarkable spirit of dogs, whose unwavering love, joy, and devotion enrich our lives daily."
         image={logo}
         imageAlt="Young Spirit's logo, a shield with a Doberman and Rottweiler on either side"
+        showFullImage
       >
         <nav className="jump-links" aria-label="Jump to section">
           <a href="#story">Our Story</a>

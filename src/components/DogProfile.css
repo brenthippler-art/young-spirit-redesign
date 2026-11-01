@@ -9,7 +9,7 @@
 
 /* Framed portrait (same frame as the page hero) */
 .dog-profile__media {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 5 / 4;
 }
 
 .dog-profile__media img {

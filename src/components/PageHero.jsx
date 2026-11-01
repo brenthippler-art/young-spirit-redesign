@@ -1,17 +1,18 @@
-import Reveal from './Reveal';
-import './PageHero.css';
+import Reveal from "./Reveal";
+import "./PageHero.css";
 
 export default function PageHero({
   eyebrow,
   title,
   intro,
   image,
-  imageAlt = '',
-  imagePosition = 'center',
+  imageAlt = "",
+  imagePosition = "center",
+  showFullImage = false,
   children,
 }) {
   return (
-    <section className={`page-hero ${image ? 'page-hero--split' : ''}`}>
+    <section className={`page-hero ${image ? "page-hero--split" : ""}`}>
       <div className="wrap page-hero__inner">
         <Reveal className="page-hero__text">
           {eyebrow && <p className="eyebrow">{eyebrow}</p>}
@@ -21,8 +22,15 @@ export default function PageHero({
         </Reveal>
 
         {image && (
-          <Reveal className="page-hero__media framed" delay={150}>
-            <img src={image} alt={imageAlt} style={{ objectPosition: imagePosition }} />
+          <Reveal
+            className={`page-hero__media framed ${showFullImage ? "page-hero__media--full" : ""}`}
+            delay={150}
+          >
+            <img
+              src={image}
+              alt={imageAlt}
+              style={{ objectPosition: imagePosition }}
+            />
           </Reveal>
         )}
       </div>
