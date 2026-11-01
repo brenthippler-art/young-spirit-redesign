@@ -33,8 +33,6 @@ export default function Boarding() {
         eyebrow="Boarding"
         title="Care while you're away"
         intro="Your dog stays with a family that treats every boarder like one of our own — daily exercise, real attention, and a comfortable place to wait for you."
-        image={boardingPhoto}
-        imageAlt="A boarding guest at Young Spirit Kennel"
       >
         <a href="tel:2706054128" className="btn btn--solid">
           Book a Stay
@@ -46,7 +44,7 @@ export default function Boarding() {
         <div className="wrap split">
           <Reveal>
             <p className="eyebrow">Rates</p>
-            <h2 className="title">
+            <h2 className="title section-titles">
               Basic <em>boarding.</em>
             </h2>
 

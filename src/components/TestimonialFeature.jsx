@@ -5,7 +5,7 @@ import './TestimonialFeature.css';
 
 export default function TestimonialFeature({
   testimonials,
-  eyebrow = 'From Our Families',
+  eyebrow = 'Reviews',
   showReviewLink = false,
 }) {
   const [t, setT] = useState(0);

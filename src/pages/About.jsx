@@ -4,7 +4,6 @@ import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import Seo from "../components/Seo";
 import logo from "../assets/logo.png";
-import saintPhoto from "../assets/saint.jpeg";
 import "./About.css";
 
 const PILLARS = [
@@ -35,8 +34,8 @@ export default function About() {
         eyebrow="About Our Kennel"
         title="Welcome to Young Spirit Kennel"
         intro="Young Spirit Kennel represents our deep appreciation for family connections and the remarkable spirit of dogs, whose unwavering love, joy, and devotion enrich our lives daily."
-        image={saintPhoto}
-        imageAlt="Young Spirit's Saint"
+        image={logo}
+        imageAlt="Young Spirit's logo, a shield with a Doberman and Rottweiler on either side"
       >
         <nav className="jump-links" aria-label="Jump to section">
           <a href="#story">Our Story</a>
@@ -48,11 +47,11 @@ export default function About() {
 
       {/* ---------- STORY ---------- */}
       <section className="section" id="story">
-        <div className="wrap split about-story">
+        <div className="wrap about-story">
           <Reveal className="prose">
             <p className="eyebrow">Two words, one name</p>
             <h2 className="title about-story__title">
-              Young <em>Spirit.</em>
+              Young Spirit.
             </h2>
             <p>
               "Young" comes from a family maiden name, and it also reflects the
@@ -71,10 +70,6 @@ export default function About() {
               nature of dogs, and the special bond they create with their
               people.
             </p>
-          </Reveal>
-
-          <Reveal className="about-crest framed" delay={150}>
-            <img src={logo} alt="Young Spirit Kennel crest" />
           </Reveal>
         </div>
       </section>
@@ -151,7 +146,7 @@ export default function About() {
       <section className="section section--surface" id="reviews">
         <TestimonialFeature
           testimonials={TESTIMONIALS}
-          eyebrow="What Families Say"
+          eyebrow="Reviews"
           showReviewLink
         />
       </section>

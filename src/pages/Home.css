@@ -10,7 +10,9 @@
 .hero__img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 6.5rem var(--gutter) 1.5rem;
+  opacity: 0.4;
   animation: heroZoom 14s var(--ease) forwards;
 }
 .hero__shade {

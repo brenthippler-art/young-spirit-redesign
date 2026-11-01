@@ -43,10 +43,6 @@
   color: var(--cream);
   letter-spacing: -0.01em;
 }
-.site-header__brand span {
-  font-style: italic;
-  color: var(--brass);
-}
 
 .site-nav {
   display: flex;

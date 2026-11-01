@@ -7,7 +7,7 @@ const NAV = [
   { to: "/litters", label: "Litters" },
   { to: "/boarding", label: "Boarding" },
   { to: "/about", label: "About" },
-  { to: "/photos", label: "Photos" },
+  { to: "/photos", label: "Gallery" },
   { to: "/faq", label: "FAQ" },
 ];
 
@@ -42,7 +42,7 @@ export default function SiteHeader() {
           aria-label="Young Spirit Kennel home"
           onClick={closeMenu}
         >
-          Young Spirit <span>Kennel</span>
+          Young Spirit Kennel
         </Link>
 
         <nav

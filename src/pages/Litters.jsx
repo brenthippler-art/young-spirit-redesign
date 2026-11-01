@@ -173,7 +173,7 @@ export default function Litters() {
           <Reveal delay={150}>
             <p className="eyebrow">Doberman Litter · 2026</p>
             <h2 className="title">
-              Kena Nell × <em>Sir Axel</em>
+              Kena Nell × Sir Axel
             </h2>
             <p className="litter-status">Born — the puppies are here</p>
 

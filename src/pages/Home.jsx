@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal";
 import TestimonialFeature from "../components/TestimonialFeature";
-import { TESTIMONIALS } from '../data/testimonials';
+import { TESTIMONIALS } from "../data/testimonials";
 import heroImg from "../assets/home/hero.png";
 import dobermanImg from "../assets/home/doberman.jpeg";
 import rottweilerImg from "../assets/home/rottweiler.jpeg";
@@ -32,13 +32,17 @@ export default function Home() {
         <div className="wrap hero__content">
           <p className="eyebrow">Bowling Green, Kentucky</p>
           <h1 className="display">
-            Dobermans &amp; Rottweilers,
+            Young Spirit Kennel
             <br />
-            <em>bred with purpose.</em>
+            <em>family, spirit, bond</em>
           </h1>
           <p className="lede hero__lede">
-            AKC-registered dogs raised in our home, with health, temperament and
-            lineage at the heart of every litter.
+            Proudly raising AKC-registered Dobermans & Rottweilers in Bowling
+            Green, Kentucky. We’re dedicated to raising quality dogs with the
+            health, temperament, and companionship families are looking for.
+            We’re also beginning to offer limited boarding, where every dog in
+            our care is treated like part of the family, with plans to expand as
+            we continue to grow and work toward a larger kennel facility.
           </p>
           <div className="hero__actions">
             <Link to="/litters" className="btn btn--solid">
@@ -56,7 +60,7 @@ export default function Home() {
       <section className="section">
         <Reveal className="wrap intro">
           <p className="eyebrow">Young Spirit Kennel</p>
-          <h2 className="title">
+          <h2 className="title choice">
             Small by choice. Every puppy is raised underfoot, socialized daily,
             and placed only with families we'd trust with our own.
           </h2>
@@ -114,9 +118,10 @@ export default function Home() {
           </Reveal>
           <Reveal className="service" delay={120}>
             <span className="service__num">02</span>
-            <h3>Boarding</h3>
+            <h3>Care while you're away</h3>
             <p>
-              Your dog stays with people who understand large working breeds.
+              Daily rates, one-on-one attention, and what to know before
+              drop-off.
             </p>
             <Link to="/boarding" className="text-link">
               Boarding details
@@ -124,22 +129,21 @@ export default function Home() {
           </Reveal>
           <Reveal className="service" delay={240}>
             <span className="service__num">03</span>
-            <h3>Verified Buyers</h3>
+            <h3>Meet the family</h3>
             <p>
-              AKC registration numbers and pedigrees are shared directly with
-              verified buyers.
+              Pedigrees, temperaments, and the dogs behind every litter we plan.
             </p>
-            <Link to="/faq" className="text-link">
-              Read the FAQ
+            <Link to="/our-dogs" className="text-link">
+              Meet the dogs
             </Link>
           </Reveal>
         </div>
       </section>
 
-         {/* ---------- TESTIMONIAL ---------- */}
-   <section className="section section--surface">
-     <TestimonialFeature testimonials={TESTIMONIALS} showReviewLink />
-   </section>
+      {/* ---------- TESTIMONIAL ---------- */}
+      <section className="section section--surface">
+        <TestimonialFeature testimonials={TESTIMONIALS} showReviewLink />
+      </section>
 
       {/* ---------- CLOSING CTA ---------- */}
       <section className="section cta">
