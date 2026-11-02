@@ -5,7 +5,7 @@ import PhotoModal from "../components/PhotoModal";
 import Reveal from "../components/Reveal";
 import Seo from "../components/Seo";
 import { DOGS } from "../data/dogs";
-import heroPhoto from "../assets/gallery/dogs/watermarked-img-1788127096915-1-572437585_122211852464274100_1535396461349607346_n.jpg";
+import heroPhoto from "../assets/gallery/dogs/572437585_122211852464274100_1535396461349607346_n.jpg";
 
 // The modal steps through every pedigree on the page, in DOGS order.
 const PEDIGREES = DOGS.map((dog) => ({
