@@ -60,10 +60,12 @@ export default function Home() {
       <section className="section">
         <Reveal className="wrap intro">
           <p className="eyebrow">Young Spirit Kennel</p>
-          <h2 className="title choice">
-            Small by choice. Every puppy is raised underfoot, socialized daily,
-            and placed only with families we'd trust with our own.
-          </h2>
+          <h3 className="title choice">
+            Our puppies grow up right alongside us, getting plenty of love,
+            attention, and socialization during every day life. We want each one
+            to have the best start and to find a family who will love them as much
+            as we do.
+          </h3>
         </Reveal>
       </section>
 
@@ -106,8 +108,7 @@ export default function Home() {
             <span className="service__num">01</span>
             <h3>Litters</h3>
             <p>
-              Planned pairings, vet-confirmed pregnancies, and a waitlist that
-              hears first.
+              Explore current and upcoming litters, meet the parents, and check puppy availability. 
             </p>
             <button
               className="text-link"
