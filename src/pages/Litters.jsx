@@ -162,13 +162,13 @@ export default function Litters() {
       {/* ---------- FEATURED LITTER ---------- */}
       <section className="section" id="dob-litter">
         <div className="wrap litter-feature">
-          <Reveal className="litter-feature__media framed">
+          {/* <Reveal className="litter-feature__media framed">
             <img
               src={litterPhoto}
               alt="The Kena x Axel Doberman puppies"
               loading="lazy"
             />
-          </Reveal>
+          </Reveal> */}
 
           <Reveal delay={150}>
             <p className="eyebrow">Doberman Litter · 2026</p>
