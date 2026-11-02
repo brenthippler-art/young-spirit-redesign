@@ -28,7 +28,7 @@ export default function SiteFooter() {
           <div className="site-footer__cols">
             <div>
               <p className="site-footer__name">
-                Young Spirit <span>Kennel</span>
+                Young Spirit Kennel
               </p>
               <p className="site-footer__about">
                 AKC-registered Doberman &amp; Rottweiler breeding and boarding
